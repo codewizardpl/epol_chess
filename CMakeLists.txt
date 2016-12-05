@@ -24,6 +24,8 @@ find_package(Threads REQUIRED)
 #----------------------------------------
 # Application
 #----------------------------------------
+include_directories(include)
+
 aux_source_directory(. SRC_LIST)
 aux_source_directory(./src SRC_LIST)
 
