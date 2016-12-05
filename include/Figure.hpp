@@ -3,71 +3,72 @@
 
 enum FigureType
 {
-    None,
-    Pawn,
-    Knight,
-    Bishop,
-    Rook,
-    Queen,
-    King
+    NoneFigureType,
+    PawnFigureType,
+    KnightFigureType,
+    BishopFigureType,
+    RookFigureType,
+    QueenFigureType,
+    KingFigureType
 };
 
 
 enum FigureColour
 {
-    White,
-    Black
+    WhiteFigureColour,
+    BlackFigureColour
 };
 
 
 enum AllowedFigureMove
 {
-    Move,
-    Strike,
-    MoveAndStrike
-}
+    NoneFigureMove,
+    MoveFigureMove,
+    StrikeFigureMove,
+    MoveAndStrikeFigureMove
+};
 
 
 class Figure
 {
 public:
-    int colour;
+    FigureColour colour;
     FigureType type;
-    AllowedFigureMove validateMove(Move move) = 0;
+    virtual AllowedFigureMove validateMove(Move move) = 0;
 };
 
 
 class FigureNone {
-    AllowedFigureMove validateMove(Move move);
+    virtual AllowedFigureMove validateMove(Move move);
 };
 
 
 class FigurePawn {
-    AllowedFigureMove validateMove(Move move);
+    virtual AllowedFigureMove validateMove(Move move);
 };
 
 
 class FigureKnight {
-    AllowedFigureMove validateMove(Move move);
+    virtual AllowedFigureMove validateMove(Move move);
 };
 
 
 class FigureBishop {
-    AllowedFigureMove validateMove(Move move);
+    virtual AllowedFigureMove validateMove(Move move);
 };
 
 
 class FigureRook {
-    AllowedFigureMove validateMove(Move move);
+    virtual AllowedFigureMove validateMove(Move move);
 };
 
 
 class FigureQueen {
-    AllowedFigureMove validateMove(Move move);
+    virtual AllowedFigureMove validateMove(Move move);
 };
 
 
 class FigureKing {
-    AllowedFigureMove validateMove(Move move);
+    virtual AllowedFigureMove validateMove(Move move);
 };
 

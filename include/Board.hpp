@@ -7,7 +7,7 @@ class Board
   public:
     Board();
 
-    Figure get(int x, int y);
-    void set(int x, int y, Figure fig);
+    Figure &get(int x, int y);
+    void set(int x, int y, Figure &fig);
 };
 

@@ -1,44 +1,44 @@
 #include "Figure.hpp"
 
 
-int FigureNone::validateMove(Move move)
+AllowedFigureMove FigureNone::validateMove(Move move)
 {
-    return 0;
+    return NoneFigureMove;
 }
 
 
-int FigurePawn::validateMove(Move move)
+AllowedFigureMove FigurePawn::validateMove(Move move)
 {
-    return 0;
+    return NoneFigureMove;
 }
 
 
-int FigureKnight::validateMove(Move move)
+AllowedFigureMove FigureKnight::validateMove(Move move)
 {
-    return 0;
+    return NoneFigureMove;
 }
 
 
-int FigureBihop::validateMove(Move move)
+AllowedFigureMove FigureBishop::validateMove(Move move)
 {
-    return 0;
+    return NoneFigureMove;
 }
 
 
-int FigureRook::validateMove(Move move)
+AllowedFigureMove FigureRook::validateMove(Move move)
 {
-    return 0;
+    return NoneFigureMove;
 }
 
 
-int FigureQueen::validateMove(Move move)
+AllowedFigureMove FigureQueen::validateMove(Move move)
 {
-    return 0;
+    return NoneFigureMove;
 }
 
 
-int FigureKing::validateMove(Move move)
+AllowedFigureMove FigureKing::validateMove(Move move)
 {
-    return 0;
+    return NoneFigureMove;
 }
 
