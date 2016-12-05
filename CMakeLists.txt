@@ -25,8 +25,10 @@ find_package(Threads REQUIRED)
 # Application
 #----------------------------------------
 aux_source_directory(. SRC_LIST)
+aux_source_directory(./src SRC_LIST)
 
 # Headers
 file(GLOB HEADERS_LIST "*.h" "*.hpp")
+file(GLOB HEADERS_LIST "./include/*.h" "./include/*.hpp")
 add_executable(${PROJECT_NAME} ${SRC_LIST} ${HEADERS_LIST})
 target_link_libraries(${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT}) 
