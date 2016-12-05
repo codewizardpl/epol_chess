@@ -11,4 +11,6 @@ set(source
     "src/Game.cpp")
 
 add_executable(${PROJECT_NAME} ${source})
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED true)
 
