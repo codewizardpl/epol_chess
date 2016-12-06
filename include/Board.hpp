@@ -1,3 +1,5 @@
+#ifndef BOARD
+#define BOARD
 #include "Figure.hpp"
 #include "Move.hpp"
 #include <vector>
@@ -22,4 +24,4 @@ class Board
 
     void moveFigure(Move m);
 };
-
+#endif

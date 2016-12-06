@@ -25,16 +25,16 @@ char ConsoleDisplay::GetSymbol(/*Figure&figure*/)
     //if(figure == nullptr){
     //}else{
     char color = 'w';
-    FigureType fType = KingFigureType;
+    FigureType fType = FigureType::King;
     char  symbol = 'p';
     switch (fType) {
-    case KingFigureType:
+    case FigureType::King:
         symbol = 'k';
         break;
-    case BishopFigureType:
+    case FigureType::Bishop:
         symbol = 'b';
         break;
-    case PawnFigureType:
+    case FigureType::Pawn:
         symbol = 'p';
         break;
     default:
