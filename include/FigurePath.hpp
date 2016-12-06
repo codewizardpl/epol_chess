@@ -1,5 +1,5 @@
-#ifndef POSITION
-#define POSITION
+#ifndef FIGUREPATH 
+#define FIGUREPATH
 
 
 #include <vector>
@@ -13,9 +13,10 @@ private:
     std::vector<Position> steps;
 public:
     FigurePath();
-    void addStep(Position _position);
+    FigurePath(bool legal);
+    FigurePath &addStep(Position step);
     int getLength();
-    Position getStep(int _index);
+    Position getStep(int index);
     void setLegal();
     bool isLegal();
 };

@@ -8,6 +8,7 @@ set(source
     "src/Board.cpp"
     "src/ConsoleDisplay.cpp"
     "src/Figure.cpp"
+    "src/FigurePawn.cpp"
     "src/Game.cpp"
     "src/FigurePath.cpp")
 

@@ -20,6 +20,7 @@ public:
 	Position getStart() { return m_start; }
 	Position getStop() { return m_stop; }
 
+        Position getRelative() { return m_start - m_stop; }
 private:
 
 	Position m_start;

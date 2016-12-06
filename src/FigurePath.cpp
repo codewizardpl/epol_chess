@@ -5,9 +5,14 @@ FigurePath::FigurePath() : legal(false)
 { }
 
 
-void FigurePath::addStep(Position _position)
+FigurePath::FigurePath(bool _legal) : legal(_legal)
+{ }
+
+
+FigurePath &FigurePath::addStep(Position step)
 {
-    steps.push_back(_position);
+    steps.push_back(step);
+    return *this;
 }
 
 
@@ -17,9 +22,9 @@ int FigurePath::getLength()
 }
 
 
-Position FigurePath::getStep(int _index)
+Position FigurePath::getStep(int index)
 {
-    return steps[_index];
+    return steps[index];
 }
 
 
