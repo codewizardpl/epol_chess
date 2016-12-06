@@ -15,13 +15,13 @@ int Board::calcIndex(int x, int y) {
 Figure& Board::get(int x, int y) {
     int index = calcIndex(x, y);
 
-    return *m_figures[index].get();
+    return *m_figures[index];
 }
 
-Figure* Board::getAndRemove(int x, int y) {
+unique_ptr<Figure> Board::remove(int x, int y) {
     int index = calcIndex(x, y);
 
-    return m_figures[index].release();
+    return unique_ptr<Figure>(move(m_figures[index]));
 }
 
 void Board::set(int x, int y, Figure *fig) {
@@ -34,10 +34,10 @@ void Board::moveFigure(Move m) {
     int startCol = m.getStart().getHorizontal(); // column
     int startRow = m.getStart().getVertical(); // row
 
-    Figure* tmpFig = getAndRemove(startCol, startRow);
+    unique_ptr<Figure> tmpFig = remove(startCol, startRow);
 
     int stopCol = m.getStop().getHorizontal(); // column
     int stopRow = m.getStop().getVertical(); // row
 
-    set(stopCol, stopRow, tmpFig);
+    m_figures[calcIndex(stopCol, stopRow)] = move(tmpFig);
 }
