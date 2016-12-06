@@ -1,2 +1,9 @@
 build
+CMakeLists.txt.user
+src/*autosave
+src/*orig
+src/*BACKUP*
+src/*BASE*
+src/*LOCAL*
+src/*REMOTE*
 
