@@ -5,7 +5,7 @@ FigurePath::FigurePath() : legal(false)
 { }
 
 
-void FigurePath::addPosition(Position _position)
+void FigurePath::addStep(Position _position)
 {
     steps.push_back(_position);
 }

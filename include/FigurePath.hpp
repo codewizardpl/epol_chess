@@ -13,7 +13,7 @@ private:
     std::vector<Position> steps;
 public:
     FigurePath();
-    void addPosition(Position _position);
+    void addStep(Position _position);
     int getLength();
     Position getStep(int _index);
     void setLegal();
