@@ -1,10 +1,7 @@
 #include <iostream>
 #include <Board.hpp>
-<<<<<<< a116c9ed5c77a83799214085258200ec3653ce7a
 #include "ConsoleDisplay.hpp"
-=======
 #include <Figure.hpp>
->>>>>>> figures on the board
 
 using namespace std;
 
@@ -55,6 +52,7 @@ int main() {
 
     Board board{};
     setupBoard(board);
+
 
     auto consoleDisplay = ConsoleDisplay();
     consoleDisplay.Display(board);
