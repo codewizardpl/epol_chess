@@ -5,45 +5,42 @@
 #include "Move.hpp"
 
 
-enum FigureType
+enum class FigureType
 {
-    NoneFigureType,
-    PawnFigureType,
-    KnightFigureType,
-    BishopFigureType,
-    RookFigureType,
-    QueenFigureType,
-    KingFigureType
+    Pawn,
+    Knight,
+    Bishop,
+    Rook,
+    Queen,
+    King
 };
 
 
-enum FigureColour
+enum class FigureColour
 {
-    WhiteFigureColour,
-    BlackFigureColour
+    White,
+    Black
 };
 
 
-enum AllowedFigureMove
+enum class AllowedFigureMove
 {
-    NoneFigureMove,
-    MoveFigureMove,
-    StrikeFigureMove,
-    MoveAndStrikeFigureMove
+    Move,
+    Strike,
+    MoveAndStrike
 };
 
 
 class Figure
 {
-public:
+private:
     FigureColour colour;
     FigureType type;
+public:
+    FigureColour getColour();
+    FigureType getType();
+
     virtual AllowedFigureMove validateMove(Move move) = 0;
-};
-
-
-class FigureNone {
-    virtual AllowedFigureMove validateMove(Move move);
 };
 
 
