@@ -18,7 +18,7 @@ void ConsoleDisplay::Display(Board &board){
         std::cout<< "\033[1;32m" << width +1 << "\033[1;37m";
         std::cout << std::endl;
     }
-    std::cout<< "\033[1;32m" << "+ a b c d e f g h +" << "\033[1;37m" << std::endl;
+    std::cout<< "\033[1;32m" << "+ a b c d e f g h +" << "\033[0;37m" << std::endl;
 
 }
 

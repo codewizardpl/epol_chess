@@ -3,6 +3,7 @@
 
 
 #include "Move.hpp"
+#include "FigurePath.hpp"
 
 
 enum class FigureType
@@ -23,11 +24,10 @@ enum class FigureColour
 };
 
 
-enum class AllowedFigureMove
+enum class FigureMoveType
 {
     Move,
-    Strike,
-    MoveAndStrike
+    Strike
 };
 
 
@@ -49,7 +49,7 @@ public:
     FigureColour getColour();
     FigureType getType();
 
-    virtual AllowedFigureMove validateMove(Move move) = 0;
+    virtual FigurePath validateMove(Move _move, FigureMoveType _moveType) = 0;
 };
 
 
@@ -60,7 +60,7 @@ public:
         setType(FigureType::Pawn);
     }
 
-    virtual AllowedFigureMove validateMove(Move move);
+    virtual FigurePath validateMove(Move _move, FigureMoveType _moveType);
 };
 
 
@@ -71,7 +71,7 @@ public:
         setType(FigureType::Knight);
     }
 
-    virtual AllowedFigureMove validateMove(Move move);
+    virtual FigurePath validateMove(Move _move, FigureMoveType _moveType);
 };
 
 
@@ -82,7 +82,7 @@ public:
         setType(FigureType::Bishop);
     }
 
-    virtual AllowedFigureMove validateMove(Move move);
+    virtual FigurePath validateMove(Move _move, FigureMoveType _moveType);
 };
 
 
@@ -93,7 +93,7 @@ public:
         setType(FigureType::Rook);
     }
 
-    virtual AllowedFigureMove validateMove(Move move);
+    virtual FigurePath validateMove(Move _move, FigureMoveType _moveType);
 };
 
 
@@ -104,7 +104,7 @@ public:
         setType(FigureType::Queen);
     }
 
-    virtual AllowedFigureMove validateMove(Move move);
+    virtual FigurePath validateMove(Move _move, FigureMoveType _moveType);
 };
 
 
@@ -115,7 +115,7 @@ public:
         setType(FigureType::King);
     }
 
-    virtual AllowedFigureMove validateMove(Move move);
+    virtual FigurePath validateMove(Move _move, FigureMoveType _moveType);
 };
 
 
