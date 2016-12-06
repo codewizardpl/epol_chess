@@ -7,17 +7,18 @@ ConsoleDisplay::ConsoleDisplay()
 
 }
 void ConsoleDisplay::Display(Board &board){
-    std::cout<< "+ a b c d e f g h +" << std::endl;
+    std::cout<< "\033[1;31m" << "+ a b c d e f g h +" << "\033[1;37m" << std::endl;
     for (int width = 0; width <8; ++width) {
-        std::cout<< width +1<<" ";
+        std::cout<<  "\033[1;31m" << width +1<<" " << "\033[1;37m";
         for (int height  = 0; height < 8; ++height) {
             Figure &figure = board.get(height,width);
+
             std::cout << GetSymbol(figure)<<" ";
         }
-        std::cout<< width +1;
+        std::cout<< "\033[1;32m" << width +1 << "\033[1;37m";
         std::cout << std::endl;
     }
-    std::cout<< "+ a b c d e f g h +" << std::endl;
+    std::cout<< "\033[1;32m" << "+ a b c d e f g h +" << "\033[1;37m" << std::endl;
 
 }
 
