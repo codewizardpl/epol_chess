@@ -27,7 +27,7 @@ Figure* Board::getAndRemove(int x, int y) {
 void Board::set(int x, int y, Figure *fig) {
     int index = calcIndex(x, y);
 
-    m_figures[index].reset(fig);
+    m_figures[index] = move(unique_ptr<Figure>(fig)); //.reset(fig);
 }
 
 void Board::moveFigure(Move m) {

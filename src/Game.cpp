@@ -1,7 +1,7 @@
 #include <iostream>
 #include <Board.hpp>
 #include "ConsoleDisplay.hpp"
-#include <Figure.hpp>
+#include "Figure.hpp"
 
 using namespace std;
 

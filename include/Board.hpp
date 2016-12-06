@@ -1,9 +1,10 @@
 #ifndef BOARD
 #define BOARD
-#include "Figure.hpp"
-#include "Move.hpp"
 #include <vector>
 #include <memory>
+#include "Figure.hpp"
+#include "Move.hpp"
+
 
 using namespace std;
 

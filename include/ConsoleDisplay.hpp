@@ -7,7 +7,7 @@ class ConsoleDisplay
 {
 public:
 	ConsoleDisplay();
-        void Display(Board board);
+        void Display(Board &board);
 private:
         char GetSymbol(Figure &figure);
 };
