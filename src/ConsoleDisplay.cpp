@@ -8,9 +8,9 @@ ConsoleDisplay::ConsoleDisplay()
 }
 void ConsoleDisplay::Display(Board &board){
     std::cout<< "\033[1;31m" << "+ a b c d e f g h +" << "\033[1;37m" << std::endl;
-    for (int width = 0; width <8; ++width) {
+    for (int width = 7; width >=0; --width) {
         std::cout<<  "\033[1;31m" << width +1<<" " << "\033[1;37m";
-        for (int height  = 0; height < 8; ++height) {
+        for (int height  = 7; height >= 0; --height) {
             Figure &figure = board.get(height,width);
 
             std::cout << GetSymbol(figure)<<" ";
