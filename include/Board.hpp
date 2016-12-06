@@ -15,7 +15,7 @@ class Board
      vector<unique_ptr<Figure> > m_figures;
 
      int calcIndex(int x, int y);
-     Figure* getAndRemove(int x, int y);
+     unique_ptr<Figure> remove(int x, int y);
 
   public:
     Board();
