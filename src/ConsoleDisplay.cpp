@@ -9,10 +9,10 @@ ConsoleDisplay::ConsoleDisplay()
 void ConsoleDisplay::Display(Board &board){
     std::cout<< "+abcdefgh+" << std::endl;
     for (int width = 0; width <8; ++width) {
-        std::cout<< width +1;
+        std::cout<< width +1<<" ";
         for (int height  = 0; height < 8; ++height) {
             Figure &figure = board.get(height,width);
-            std::cout << GetSymbol(figure);
+            std::cout << GetSymbol(figure)<<" ";
         }
         std::cout<< width +1;
         std::cout << std::endl;
