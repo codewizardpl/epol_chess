@@ -6,11 +6,13 @@ ConsoleDisplay::ConsoleDisplay()
 {
 
 }
-
-void ConsoleDisplay::Display(Board board) {
+ConsloleDisplay::Display(Board board){
+    using::std;
     for (int high = 0; high <8; ++high) {
         for (int width = 0; width < 8; ++width) {
-            std::cout <<"";
+            board.get(high,width);
+            cout <<"";
         }
+        cout << endl;
     }
 }
