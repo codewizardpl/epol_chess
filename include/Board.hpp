@@ -3,6 +3,8 @@
 class Board
 {
   private:
+	Figure *m_figure;
+
 
   public:
     Board();

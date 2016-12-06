@@ -1,8 +1,9 @@
 #include "Board.hpp"
 
-class ConsloleDisplay
+class ConsoleDisplay
 {
 public:
-    ConsloleDisplay();
+	ConsoleDisplay();
+	ConsoleDisplay(Board board);
     void Display(Board board);
 };
