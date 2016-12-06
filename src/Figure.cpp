@@ -13,38 +13,38 @@ FigureType Figure::getType()
 }
 
 
-AllowedFigureMove FigurePawn::validateMove(Move move)
+FigurePath FigurePawn::validateMove(Move _move, FigureMoveType _moveType)
 {
-    return AllowedFigureMove::Move;
+    return FigurePath();
 }
 
 
-AllowedFigureMove FigureKnight::validateMove(Move move)
+FigurePath FigureKnight::validateMove(Move _move, FigureMoveType _moveType)
 {
-    return AllowedFigureMove::Move;
+    return FigurePath();
 }
 
 
-AllowedFigureMove FigureBishop::validateMove(Move move)
+FigurePath FigureBishop::validateMove(Move _move, FigureMoveType _moveType)
 {
-    return AllowedFigureMove::Move;
+    return FigurePath();
 }
 
 
-AllowedFigureMove FigureRook::validateMove(Move move)
+FigurePath FigureRook::validateMove(Move _move, FigureMoveType _moveType)
 {
-    return AllowedFigureMove::Move;
+    return FigurePath();
 }
 
 
-AllowedFigureMove FigureQueen::validateMove(Move move)
+FigurePath FigureQueen::validateMove(Move _move, FigureMoveType _moveType)
 {
-    return AllowedFigureMove::Move;
+    return FigurePath();
 }
 
 
-AllowedFigureMove FigureKing::validateMove(Move move)
+FigurePath FigureKing::validateMove(Move _move, FigureMoveType _moveType)
 {
-    return AllowedFigureMove::Move;
+    return FigurePath();
 }
 
