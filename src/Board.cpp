@@ -15,7 +15,7 @@ int Board::calcIndex(int x, int y) {
 Figure& Board::get(int x, int y) {
     int index = calcIndex(x, y);
 
-    return *m_figures[index].get();
+    return *m_figures[index];
 }
 
 unique_ptr<Figure> Board::remove(int x, int y) {
