@@ -1,3 +1,7 @@
+#ifndef FIGURE
+#define FIGURE
+
+
 #include "Move.hpp"
 
 
@@ -72,3 +76,5 @@ class FigureKing {
     virtual AllowedFigureMove validateMove(Move move);
 };
 
+
+#endif
