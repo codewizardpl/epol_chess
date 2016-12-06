@@ -9,6 +9,6 @@ public:
 	ConsoleDisplay();
         void Display(Board board);
 private:
-        char GetSymbol(/*Figure &figure*/);
+        char GetSymbol(Figure &figure);
 };
 #endif
