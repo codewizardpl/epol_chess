@@ -12,7 +12,7 @@ public: PuzzleLogic() {};
   void setFigure(Board& board, Player& player, FigureType figure);
 private:
   
-  bool validatePosition(Board& board, Player& player, Position& position);
+  bool validatePosition(Board& board, Player& player, Position& position, Figure* figure);
   void updateBoard(Board& board, Position& position, Figure* figure);
 };
 
