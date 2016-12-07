@@ -16,12 +16,6 @@ public:
     int getHorizontal() { return m_horizontal; }
     int getVertical() { return m_vertical; }
 
-    bool operator=(const Position &other) const
-    {
-        return m_horizontal == other.m_horizontal &&
-               m_vertical == other.m_vertical;
-    }
-
     Position operator-(const Position &other) const
     {
         return Position(m_horizontal - other.m_horizontal,
@@ -40,9 +34,12 @@ public:
                m_vertical == other.m_vertical;
     }
 
+  bool validateCoordinates() {return m_horizontal >=0 && m_horizontal < 8 && m_vertical >= 0 && m_vertical < 8;}
+
 private:
     int m_horizontal;
     int m_vertical;
 };
+
 
 #endif /* INCLUDE_POSITION_HPP_ */
