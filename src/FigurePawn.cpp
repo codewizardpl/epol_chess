@@ -19,12 +19,14 @@ FigurePath FigurePawn::validateMove(Move move, FigureMoveType moveType)
         case FigureMoveType::Strike:
             if (isLeftStrike(move) || isRightStrike(move))
                 return FigurePath(true);
+            break;
 
         case FigureMoveType::Move:
             if (isStep(move))
                 return FigurePath(true);
             else if (isFromBaseline(move) && isDoubleStep(move))
                 return FigurePath(true).addStep(move.getStart()+Position(0, forwardDirection()));
+            break;
     }
 
     return FigurePath(false);
