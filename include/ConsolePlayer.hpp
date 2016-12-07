@@ -13,7 +13,7 @@ public:
   Move getMove();
 
 private:
-  Position parsePosition(string input);
+  Position parsePosition(std::string input);
 };
 
 #endif

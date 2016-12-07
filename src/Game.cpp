@@ -62,7 +62,13 @@ int main() {
     ConsolePlayer white("white player", FigureColour::White);
     ConsolePlayer black("black player", FigureColour::Black);
     GameLogic logic;
-    logic.startGame(board, white, black);
 
+    while (1) {
+      logic.makeMove(board, white);
+      consoleDisplay.Display(board);
+      logic.makeMove(board, black);
+      consoleDisplay.Display(board);
+    }
+    
     return 0;
 }

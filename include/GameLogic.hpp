@@ -8,8 +8,9 @@ class Move;
 class GameLogic {
 public: GameLogic() {};
   void startGame(Board& board, Player& white, Player& black);
-private:
   void makeMove(Board& board, Player& player);
+private:
+  
   bool validateMove(Board& board, Player& player, Move& move);
   void updateBoard(Board& board, Move&  move);
 };

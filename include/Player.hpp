@@ -9,7 +9,8 @@ class Player {
   public:
   Player(const char* name, FigureColour colour);
   FigureColour getColour();
-  virtual Move getMove();
+  const char* getName();
+  virtual Move getMove() = 0;
 
 private:
   const char* m_name;

@@ -14,7 +14,7 @@ GameLogic::startGame(Board& board, Player& white, Player& black) {
 
 void GameLogic::makeMove(Board& board, Player& player) {
   Move move = player.getMove();
-  validateMove(board, player, move);
+  //validateMove(board, player, move);
   updateBoard(board, move);
 }
 

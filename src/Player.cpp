@@ -1,12 +1,17 @@
-#include "Player.cpp"
+#include "Player.hpp"
 
 Player::Player(const char* name, FigureColour colour) 
-  : _name(name),
-    _colour(colour)
+  : m_name(name),
+    m_colour(colour)
 {
 }
 
 FigureColour
 Player::getColour() {
-  return _colour;
+  return m_colour;
+}
+
+const char*
+Player::getName() {
+  return m_name;
 }
