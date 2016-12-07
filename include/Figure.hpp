@@ -2,6 +2,7 @@
 #define FIGURE
 
 
+#include <set>
 #include "Move.hpp"
 #include "FigurePath.hpp"
 
@@ -46,6 +47,8 @@ public:
     virtual ~Figure() {}
 
     virtual FigurePath validateMove(Move _move, FigureMoveType _moveType) = 0;
+
+    virtual std::set<Position> getPossibleMoves(Position start) = 0;
 };
 
 #endif

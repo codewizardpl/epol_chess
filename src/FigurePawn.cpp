@@ -3,9 +3,6 @@
 #include <iostream>
 
 
-using namespace std;
-
-
 FigurePawn::FigurePawn(FigureColour colour) : Figure(FigureType::Pawn, colour)
 {
 }
@@ -30,6 +27,12 @@ FigurePath FigurePawn::validateMove(Move move, FigureMoveType moveType)
     }
 
     return FigurePath(false);
+}
+
+
+std::set<Position> FigurePawn::getPossibleMoves(Position start)
+{
+    return std::set<Position>();
 }
 
 
