@@ -5,10 +5,12 @@ project(epol_chess CXX)
 include_directories(include)
 
 set(source
+    "src/main.cpp"
+    "src/ChessGame.cpp"
     "src/Board.cpp"
     "src/ConsoleDisplay.cpp"
     "src/Figure.cpp"
-    "src/Game.cpp"
+    "src/FigurePawn.cpp"
     "src/FigurePath.cpp"
     "src/GameLogic.cpp"
     "src/ConsolePlayer.cpp"
