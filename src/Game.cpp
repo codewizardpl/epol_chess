@@ -1,9 +1,18 @@
 #include <iostream>
-#include <Board.hpp>
+#include "Board.hpp"
 #include "ConsoleDisplay.hpp"
-#include "Figures.hpp"
+//#include "Figures.hpp"
 #include "GameLogic.hpp"
 #include "ConsolePlayer.hpp"
+
+#include "Figure.hpp"
+#include "FigurePawn.hpp"
+#include "FigureKnight.hpp"
+#include "FigureBishop.hpp"
+#include "FigureRook.hpp"
+#include "FigureQueen.hpp"
+#include "FigureKing.hpp"
+
 
 using namespace std;
 
