@@ -2,6 +2,7 @@
 #include "Board.hpp"
 #include "Player.hpp"
 #include "Figure.hpp"
+#include "FigureQueen.hpp"
 #include "Position.hpp"
 #include <iostream>
 
