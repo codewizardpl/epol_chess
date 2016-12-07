@@ -1,25 +1,31 @@
-#include <iostream>
-#include "Board.hpp"
-#include "ConsoleDisplay.hpp"
-//#include "Figures.hpp"
-#include "GameLogic.hpp"
+#include "ChessGame.hpp"
+#include "Figures.hpp"
 #include "ConsolePlayer.hpp"
+#include "GameLogic.hpp"
+#include "ConsoleDisplay.hpp"
 
-#include "Figure.hpp"
-#include "FigurePawn.hpp"
-#include "FigureKnight.hpp"
-#include "FigureBishop.hpp"
-#include "FigureRook.hpp"
-#include "FigureQueen.hpp"
-#include "FigureKing.hpp"
+ChessGame::ChessGame() {}
 
+void ChessGame::run()
+{
+    auto consoleDisplay = ConsoleDisplay();
+    consoleDisplay.Display(board);
 
-using namespace std;
+    ConsolePlayer white("white player", FigureColour::White);
+    ConsolePlayer black("black player", FigureColour::Black);
+    GameLogic logic;
 
-//rook, knight, bishop, queen, king, bishop, knight, and rook; second row: pawns
+    while (1) {
+      logic.makeMove(board, white);
+      consoleDisplay.Display(board);
+      logic.makeMove(board, black);
+      consoleDisplay.Display(board);
+    }
+    
+}
 
-void setupBoard(Board& board) {
-
+void ChessGame::setupBoard()
+{
     board.set(0, 0, new FigureRook(FigureColour::White));
     board.set(1, 0, new FigureKnight(FigureColour::White));
     board.set(2, 0, new FigureBishop(FigureColour::White));
@@ -55,29 +61,4 @@ void setupBoard(Board& board) {
     board.set(5, 6, new FigurePawn(FigureColour::Black));
     board.set(6, 6, new FigurePawn(FigureColour::Black));
     board.set(7, 6, new FigurePawn(FigureColour::Black));
-}
-
-int main() {
-
-    cout << "Helloo!!!" << endl;
-
-    Board board{};
-    setupBoard(board);
-
-
-    auto consoleDisplay = ConsoleDisplay();
-    consoleDisplay.Display(board);
-
-    ConsolePlayer white("white player", FigureColour::White);
-    ConsolePlayer black("black player", FigureColour::Black);
-    GameLogic logic;
-
-    while (1) {
-      logic.makeMove(board, white);
-      consoleDisplay.Display(board);
-      logic.makeMove(board, black);
-      consoleDisplay.Display(board);
-    }
-    
-    return 0;
 }
