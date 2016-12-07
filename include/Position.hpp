@@ -16,12 +16,6 @@ public:
     int getHorizontal() { return m_horizontal; }
     int getVertical() { return m_vertical; }
 
-    bool operator=(const Position &other) const
-    {
-        return m_horizontal == other.m_horizontal &&
-               m_vertical == other.m_vertical;
-    }
-
     Position operator-(const Position &other) const
     {
         return Position(m_horizontal - other.m_horizontal,
