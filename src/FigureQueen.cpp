@@ -14,6 +14,18 @@ FigurePath FigureQueen::validateMove(Move _move, FigureMoveType _moveType)
 
 std::set<Position> FigureQueen::getPossibleMoves(Position start)
 {
-    return std::set<Position>();
+    std::set<Position> result;
+
+    for (int i=0; i<8; i++)
+    {
+        Position horizontalLine = Position(i, start.getVertical());
+        if (!(horizontalLine == start))
+            result.insert(horizontalLine);
+        Position verticalLine = Position(start.getHorizontal(), i);
+        if (!(verticalLine == start))
+            result.insert(verticalLine);
+    }
+
+    return result;
 }
 
