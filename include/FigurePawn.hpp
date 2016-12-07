@@ -2,8 +2,8 @@
 #define INCLUDE_FIGUREPAWN_HPP_
 
 
+#include <set>
 #include "Figure.hpp"
-
 
 class FigurePawn : public Figure {
 public:

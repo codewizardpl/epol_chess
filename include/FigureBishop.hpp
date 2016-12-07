@@ -2,8 +2,8 @@
 #define INCLUDE_FIGUREBISHOP_HPP_
 
 
+#include <set>
 #include "Figure.hpp"
-
 
 class FigureBishop : public Figure  {
 public:

@@ -65,3 +65,4 @@ void ChessGame::setupBoard()
     board.set(6, 6, new FigurePawn(FigureColour::Black));
     board.set(7, 6, new FigurePawn(FigureColour::Black));
 }
+

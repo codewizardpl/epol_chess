@@ -3,8 +3,10 @@
 #include "Game.hpp"
 #include "PuzzleGame.hpp"
 #include "ChessGame.hpp"
+#include "PuzzleGame.hpp"
 
 int main() {
+
 
     Game *game;
     int game_selected;
@@ -20,6 +22,7 @@ int main() {
     game->run();
     
     delete game;
+
     
     return 0;
 }
