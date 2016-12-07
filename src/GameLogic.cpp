@@ -17,6 +17,10 @@ void GameLogic::makeMove(Board& board, Player& player) {
   Move move = player.getMove();
   while (validateMove(board, player, move) == false) {
     move = player.getMove();
+    std::cout << "validateMoveStart: " << move.getStart().getVertical() << 
+      move.getStart().getHorizontal() << std::endl;
+    std::cout << "validateMoveStop: " << move.getStop().getVertical() << 
+      move.getStop().getHorizontal() << std::endl;
   }
   updateBoard(board, move);
 }
