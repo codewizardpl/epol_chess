@@ -10,7 +10,9 @@ set(source
     "src/Figure.cpp"
     "src/FigurePawn.cpp"
     "src/Game.cpp"
-    "src/FigurePath.cpp")
+    "src/FigurePath.cpp"
+    "src/GameLogic.cpp"
+    "src/ConsolePlayer.cpp")
 
 add_executable(${PROJECT_NAME} ${source})
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)

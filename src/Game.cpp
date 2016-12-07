@@ -2,6 +2,8 @@
 #include <Board.hpp>
 #include "ConsoleDisplay.hpp"
 #include "Figures.hpp"
+#include "GameLogic.hpp"
+#include "ConsolePlayer.hpp"
 
 using namespace std;
 
@@ -56,6 +58,11 @@ int main() {
 
     auto consoleDisplay = ConsoleDisplay();
     consoleDisplay.Display(board);
+
+    ConsolePlayer white("white player", FigureColour::White);
+    ConsolePlayer black("black player", FigureColour::Black);
+    GameLogic logic;
+    logic.startGame(board, white, black);
 
     return 0;
 }
