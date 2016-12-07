@@ -3,6 +3,7 @@
 #include "Player.hpp"
 #include "Figure.hpp"
 #include "Move.hpp"
+#include <iostream>
 
 void
 GameLogic::startGame(Board& board, Player& white, Player& black) {
@@ -14,7 +15,9 @@ GameLogic::startGame(Board& board, Player& white, Player& black) {
 
 void GameLogic::makeMove(Board& board, Player& player) {
   Move move = player.getMove();
-  //validateMove(board, player, move);
+  while (validateMove(board, player, move) == false) {
+    move = player.getMove();
+  }
   updateBoard(board, move);
 }
 
@@ -27,10 +30,12 @@ bool
 GameLogic::validateMove(Board& board, Player& player, Move& move) {
   Figure& figure = board.get(move.getStart().getHorizontal(),
 			     move.getStart().getVertical());
-  if (&figure == nullptr) { 
+  if (&figure == nullptr) {
+    std::cout << "no figure at start position" << std::endl;
     return false; // no figure at start position
   }
   if (figure.getColour() != player.getColour()) {
+    std::cout << "trying to move the oponent's figure" << std::endl;
     return false; // trying to move the oponent's figure
   }
  
@@ -38,11 +43,13 @@ GameLogic::validateMove(Board& board, Player& player, Move& move) {
 				      move.getStop().getVertical());
   bool capture = (&captured_figure == nullptr ? false : true);
   if (capture && captured_figure.getColour() == player.getColour()) {
+    std::cout << "trying to capture own figure" << std::endl;
     return false; // trying to capture own figure
   }
  
   FigurePath path = figure.validateMove(move, (capture ? FigureMoveType::Strike : FigureMoveType::Move));
   if (!path.isLegal()) {
+    std::cout << "illegal move " << (figure.getType() == FigureType::Pawn ? "pawn" : "other") << std::endl;
     return false; // incorrect move
   }
   //if (!board.figuresOnPath(path)) {
