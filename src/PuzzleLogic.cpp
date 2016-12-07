@@ -22,6 +22,11 @@ PuzzleLogic::updateBoard(Board& board, Position& position, Figure* figure) {
 
 bool
 PuzzleLogic::validatePosition(Board& board, Player& , Position& position, Figure* figure) {
+  Figure& f1 = board.get(position.getHorizontal(),
+			 position.getVertical());
+  if (&f1 != nullptr) {
+    return false;
+  }
   std::set<Position> possibleMoves = figure->getPossibleMoves(position);
   for (auto it = possibleMoves.begin(); it != possibleMoves.end(); ++it) {
     Position pos = *it;
