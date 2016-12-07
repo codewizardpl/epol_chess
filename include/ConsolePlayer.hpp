@@ -11,6 +11,7 @@ class ConsolePlayer: public Player {
 public:
   ConsolePlayer(const char* name, FigureColour colour) : Player(name, colour) {};
   Move getMove();
+  Position getPosition();
 
 private:
   Position parsePosition(std::string input);

@@ -13,6 +13,14 @@ ConsolePlayer::getMove() {
 }
 
 Position
+ConsolePlayer::getPosition() {
+  std::cout << getName() << " figure position:";
+  std::string position;
+  std::cin >> position;
+  return parsePosition(position);
+}
+
+Position
 ConsolePlayer::parsePosition(std::string input) {
   char x, y;
   std::sscanf(input.c_str(), "%c%c", &x, &y);
