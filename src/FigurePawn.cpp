@@ -1,5 +1,9 @@
 #include <stdexcept>
 #include "FigurePawn.hpp"
+#include <iostream>
+
+
+using namespace std;
 
 
 FigurePawn::FigurePawn(FigureColour colour) : Figure(FigureType::Pawn, colour)
@@ -69,8 +73,8 @@ bool FigurePawn::isFromBaseline(Move move)
 int FigurePawn::forwardDirection() {
     switch(getColour())
     {
-        case FigureColour::White: return 1;
-        case FigureColour::Black: return -1;
+        case FigureColour::White: return -1;
+        case FigureColour::Black: return 1;
     }
     throw std::invalid_argument("unknown colour"); 
 }
