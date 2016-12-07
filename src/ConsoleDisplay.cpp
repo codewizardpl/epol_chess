@@ -7,14 +7,14 @@ ConsoleDisplay::ConsoleDisplay()
 
 }
 void ConsoleDisplay::Display(Board &board){
-    cout<< "\033[1;31m" << "+ a b c d e f g h +" << "\033[1;37m" << endl;
-    for (int width = 7; width >=0; --width) {
-        cout<<  "\033[1;31m" << width +1<<" " << "\033[1;37m";
-        for (int height  = 0; height < 8; ++height) {
-            Figure &figure = board.get(height,width);
+    cout<< "\033[1;31m" << "+ a b c d e f g h +" << "\033[1;37m"  << endl;
+    for (int height = 7; height >=0; --height) {
+        cout<<  "\033[1;31m" << height +1<<" " << "\033[1;37m";
+        for (int width  = 0; width < 8; ++width) {
+            Figure &figure = board.get(width,height);
             cout << GetSymbol(figure)<<" ";
         }
-        cout<< "\033[1;32m" << width +1 << "\033[1;37m"<<endl;
+        cout<< "\033[1;32m" << height +1 << "\033[1;37m"<<endl;
     }
     cout<< "\033[1;32m" << "+ a b c d e f g h +" << "\033[0;37m" <<endl;
 
