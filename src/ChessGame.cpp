@@ -4,7 +4,10 @@
 #include "GameLogic.hpp"
 #include "ConsoleDisplay.hpp"
 
+
 ChessGame::ChessGame() {}
+
+ChessGame::~ChessGame() {}
 
 void ChessGame::run()
 {

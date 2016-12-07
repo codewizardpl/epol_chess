@@ -6,6 +6,7 @@ include_directories(include)
 
 set(source
     "src/main.cpp"
+    "src/PuzzleGame.cpp"
     "src/ChessGame.cpp"
     "src/Board.cpp"
     "src/ConsoleDisplay.cpp"
