@@ -2,8 +2,7 @@
 #include <iostream>
 using namespace std;
 
-ConsoleDisplay::ConsoleDisplay()
-{
+ConsoleDisplay::ConsoleDisplay(){
 
 }
 
@@ -20,8 +19,31 @@ void ConsoleDisplay::Display(Board &board){
     cout<< "\033[1;32m" << "+ a b c d e f g h +" << "\033[0;37m" <<endl;
 
 }
-void ConsoleDisplay::Display(Board &board, set<Position> position){
-    //TODO
+void ConsoleDisplay::Display(Board &board, set<Position> &position){
+
+    cout<< "\033[1;31m" << "+ a b c d e f g h +" << "\033[1;37m"  << endl;
+    for (int height = 7; height >=0; --height) {
+        cout<<  "\033[1;31m" << height +1<<" " << "\033[1;37m";
+        for (int width  = 0; width < 8; ++width) {
+            if(isRestrictedField(position, width,  height)){
+                cout <<"* ";
+            }else{
+                Figure &figure = board.get(width,height);
+                cout << GetSymbol(figure)<<" ";
+            }
+        }
+        cout<< "\033[1;32m" << height +1 << "\033[1;37m"<<endl;
+    }
+    cout<< "\033[1;32m" << "+ a b c d e f g h +" << "\033[0;37m" <<endl;
+}
+
+bool ConsoleDisplay::isRestrictedField(set<Position> &position, int x, int y){
+
+    if(true){
+        return true;
+    }else{
+        return true;
+    }
 }
 
 char ConsoleDisplay::GetSymbol(Figure&figure)

@@ -12,8 +12,9 @@ class ConsoleDisplay
 public:
 	ConsoleDisplay();
         void Display(Board &board);
-        void Display(Board &board, set<Position> position);
+        void Display(Board &board, set<Position> &position);
 private:
         char GetSymbol(Figure &figure);
+        bool isRestrictedField(set<Position> &position, int x, int y);
 };
 #endif
