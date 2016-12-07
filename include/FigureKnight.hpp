@@ -2,8 +2,8 @@
 #define INCLUDE_FIGUREKNIGHT_HPP_
 
 
+#include <set>
 #include "Figure.hpp"
-
 
 class FigureKnight : public Figure  {
 public:
