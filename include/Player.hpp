@@ -11,6 +11,7 @@ class Player {
   FigureColour getColour();
   const char* getName();
   virtual Move getMove() = 0;
+  virtual Position getPosition() = 0;
 
 private:
   const char* m_name;
