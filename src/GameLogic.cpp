@@ -28,6 +28,9 @@ GameLogic::updateBoard(Board& board, Move& move) {
 
 bool
 GameLogic::validateMove(Board& board, Player& player, Move& move) {
+  if (!move.validateCoordinates()) {
+    return false;
+  }
   Figure& figure = board.get(move.getStart().getHorizontal(),
 			     move.getStart().getVertical());
   if (&figure == nullptr) {
@@ -47,9 +50,11 @@ GameLogic::validateMove(Board& board, Player& player, Move& move) {
     return false; // trying to capture own figure
   }
  
-  FigurePath path = figure.validateMove(move, (capture ? FigureMoveType::Strike : FigureMoveType::Move));
+  FigurePath path = figure.validateMove(move,
+					(capture ? FigureMoveType::Strike : FigureMoveType::Move));
   if (!path.isLegal()) {
-    std::cout << "illegal move " << (figure.getType() == FigureType::Pawn ? "pawn" : "other") << std::endl;
+    std::cout << "illegal move " << (figure.getType() == FigureType::Pawn ? "pawn" : "other")
+	      << std::endl;
     return false; // incorrect move
   }
   //if (!board.figuresOnPath(path)) {

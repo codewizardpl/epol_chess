@@ -21,10 +21,13 @@ public:
 	Position getStop() { return m_stop; }
 
         Position getRelative() { return m_start - m_stop; }
+        bool validateCoordinates() {return m_start.validateCoordinates() &&
+                                            m_stop.validateCoordinates();};
 private:
 
 	Position m_start;
 	Position m_stop;
 };
+
 
 #endif /* INCLUDE_MOVE_HPP_ */

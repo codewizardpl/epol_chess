@@ -34,9 +34,12 @@ public:
                m_vertical == other.m_vertical;
     }
 
+  bool validateCoordinates() {return m_horizontal >=0 && m_horizontal < 8 && m_vertical >= 0 && m_vertical < 8;}
+
 private:
     int m_horizontal;
     int m_vertical;
 };
+
 
 #endif /* INCLUDE_POSITION_HPP_ */
