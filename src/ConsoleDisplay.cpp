@@ -6,6 +6,7 @@ ConsoleDisplay::ConsoleDisplay()
 {
 
 }
+
 void ConsoleDisplay::Display(Board &board){
     cout<< "\033[1;31m" << "+ a b c d e f g h +" << "\033[1;37m"  << endl;
     for (int height = 7; height >=0; --height) {
@@ -18,6 +19,9 @@ void ConsoleDisplay::Display(Board &board){
     }
     cout<< "\033[1;32m" << "+ a b c d e f g h +" << "\033[0;37m" <<endl;
 
+}
+void ConsoleDisplay::Display(Board &board, set<Position> position){
+    //TODO
 }
 
 char ConsoleDisplay::GetSymbol(Figure&figure)
