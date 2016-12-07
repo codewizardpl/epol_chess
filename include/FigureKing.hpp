@@ -1,9 +1,8 @@
 #ifndef INCLUDE_FIGUREKING_HPP_
 #define INCLUDE_FIGUREKING_HPP_
 
-
+#include <set>
 #include "Figure.hpp"
-
 
 class FigureKing : public Figure  {
 public:

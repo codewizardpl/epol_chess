@@ -2,6 +2,7 @@
 #define INCLUDE_FIGUREROOK_HPP_
 
 
+#include <set>
 #include "Figure.hpp"
 
 

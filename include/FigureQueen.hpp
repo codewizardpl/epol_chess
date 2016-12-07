@@ -2,8 +2,8 @@
 #define INCLUDE_FIGUREQUEEN_HPP_
 
 
+#include <set>
 #include "Figure.hpp"
-
 
 class FigureQueen : public Figure  {
 public:

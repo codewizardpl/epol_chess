@@ -11,17 +11,16 @@ public:
     {
     }
 
-    int getHorizontal()
+    int getHorizontal() const
     {
         return m_horizontal;
     }
 
 
-    int getVertical()
+    int getVertical() const
     {
         return m_vertical;
     }
-
 
     Position operator-(const Position &other) const
     {
@@ -43,14 +42,12 @@ public:
                m_vertical == other.m_vertical;
     }
 
-
     bool operator<(const Position &other) const
     {
         int v1 = m_horizontal * 8 + m_vertical;
         int v2 = other.m_horizontal * 8 + other.m_vertical;
         return v1 < v2;
     }
-
 
     bool validateCoordinates()
     {
@@ -65,6 +62,24 @@ private:
 
 };
 
+class PositionValidator
+{
+public:
+	PositionValidator(int min_h, int max_h, int min_v, int max_v)
+		: m_min_h(min_h), m_max_h(max_h), m_min_v(min_v), m_max_v(max_v)
+	{}
 
-#endif
+	bool operator() (const Position& p)
+	{
+		return ((p.getHorizontal() >= m_min_h) &&
+			    (p.getHorizontal() <= m_max_h) &&
+			    (p.getVertical() >= m_min_v) &&
+			    (p.getVertical() <= m_max_v));
+	}
 
+private:
+	int m_min_h, m_max_h, m_min_v, m_max_v;
+
+};
+
+#endif /* INCLUDE_POSITION_HPP_ */
