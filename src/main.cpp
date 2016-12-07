@@ -5,16 +5,16 @@
 #include "ChessGame.hpp"
 #include "PuzzleGame.hpp"
 
-enum Games {
-    CHESS,
-    PUZZLE
-}
+
+#define    CHESS 1
+#define    PUZZLE 2
+
 
 int main() {
 
 
     Game *game;
-    enum Games game_selected;
+    int game_selected;
     cout << "Select game: Chess (1) or Puzzle (2)" << endl;
     cin >> game_selected;
     
