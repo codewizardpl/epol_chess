@@ -4,7 +4,7 @@
 //#include "Figures.hpp"
 #include "GameLogic.hpp"
 #include "ConsolePlayer.hpp"
-
+#include "PuzzleLogic.hpp"
 #include "Figure.hpp"
 #include "FigurePawn.hpp"
 #include "FigureKnight.hpp"
@@ -62,7 +62,7 @@ int main() {
     cout << "Helloo!!!" << endl;
 
     Board board{};
-    setupBoard(board);
+    //setupBoard(board);
 
 
     auto consoleDisplay = ConsoleDisplay();
@@ -71,6 +71,12 @@ int main() {
     ConsolePlayer white("white player", FigureColour::White);
     ConsolePlayer black("black player", FigureColour::Black);
     GameLogic logic;
+    PuzzleLogic puzzle;
+
+    for (int i = 0; i < 8; ++i) {
+      puzzle.setFigure(board, white, FigureType::Queen);
+      consoleDisplay.Display(board);
+    }
 
     while (1) {
       logic.makeMove(board, white);

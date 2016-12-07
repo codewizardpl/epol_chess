@@ -25,7 +25,9 @@ PuzzleLogic::validatePosition(Board& board, Player& , Position& position, Figure
   std::set<Position> possibleMoves = figure->getPossibleMoves(position);
   for (auto it = possibleMoves.begin(); it != possibleMoves.end(); ++it) {
     Position pos = *it;
-    if (board.get(pos.getHorizontal(), pos.getVertical()).getType() == FigureType::Queen) {
+    Figure& f = board.get(pos.getHorizontal(),
+			  pos.getVertical());
+    if (&f != nullptr) {
       return false;
     }
   }
