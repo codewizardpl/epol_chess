@@ -6,21 +6,33 @@
 #include "PuzzleGame.hpp"
 
 
-#define    CHESS 1
-#define    PUZZLE 2
+enum class GameType {
 
+    CHESS = 1,
+    PUZZLE
+};
+
+std::istream& operator>>( std::istream& is, GameType& gt )
+{
+    int tmp ;
+    if ( is >> tmp )
+        gt = static_cast<GameType>( tmp ) ;
+    return is ;
+}
+ 
+using namespace std;
 
 int main() {
 
 
     Game *game;
-    int game_selected;
+    GameType game_selected;
     cout << "Select game: Chess (1) or Puzzle (2)" << endl;
     cin >> game_selected;
     
     switch (game_selected){
-        case CHESS: { game = new ChessGame(); break; }
-        case PUZZLE: { game = new PuzzleGame(); break; }
+        case GameType::CHESS: { game = new ChessGame(); break; }
+        case GameType::PUZZLE: { game = new PuzzleGame(); break; }
         default: game = new ChessGame();
     }
     game->setupBoard();
