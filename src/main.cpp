@@ -4,7 +4,9 @@
 #include "PuzzleGame.hpp"
 #include "ChessGame.hpp"
 #include "PuzzleGame.hpp"
+#include "FigureBishop.hpp"
 
+using namespace std;
 
 enum class GameType {
 
@@ -20,10 +22,7 @@ std::istream& operator>>( std::istream& is, GameType& gt )
     return is ;
 }
  
-using namespace std;
-
 int main() {
-
 
     Game *game;
     GameType game_selected;
@@ -39,7 +38,6 @@ int main() {
     game->run();
     
     delete game;
-
     
     return 0;
 }

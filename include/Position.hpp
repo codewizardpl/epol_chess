@@ -1,9 +1,11 @@
 #ifndef INCLUDE_POSITION_HPP_
 #define INCLUDE_POSITION_HPP_
 
+#include <iostream>
 
 class Position
 {
+	friend std::ostream& operator<<(std::ostream& o, const Position& p);
 
 public:
 
@@ -61,6 +63,12 @@ private:
     int m_vertical;
 
 };
+
+inline std::ostream& operator<<(std::ostream& o, const Position& p)
+{
+	o << "[" << p.m_horizontal <<  "," << p.m_vertical  << "]";
+	return o;
+}
 
 class PositionValidator
 {
