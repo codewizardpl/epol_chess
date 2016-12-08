@@ -12,7 +12,7 @@
 #include "NetworkPlayer.hpp"
 #include "Move.hpp"
 #include "Position.hpp"
-
+#include "move.pb.h"
 
 NetworkPlayer::NetworkPlayer(const char* name, FigureColour colour) : Player(name, colour) {};
 
