@@ -27,7 +27,8 @@ set(source
     "src/FigureQueen.cpp"
     "src/FigureRook.cpp"
     "src/FigureKnight.cpp"
-    "src/FigureBishop.cpp")
+    "src/FigureBishop.cpp"
+    "src/NetworkPlayer.cpp")
 
 add_executable(${PROJECT_NAME} ${source})
 target_link_libraries(${PROJECT_NAME} ${Boost_SYSTEM_LIBRARY} ${Protobuf_LIBRARIES})
