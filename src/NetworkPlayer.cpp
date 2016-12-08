@@ -6,10 +6,15 @@
  */
 
 #include <iostream>
+#include <boost/array.hpp>
+#include <boost/asio.hpp>
 
 #include "NetworkPlayer.hpp"
 #include "Move.hpp"
 #include "Position.hpp"
+
+
+NetworkPlayer::NetworkPlayer(const char* name, FigureColour colour) : Player(name, colour) {};
 
 Move
 NetworkPlayer::getMove() {

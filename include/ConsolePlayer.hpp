@@ -3,14 +3,18 @@
 
 #include "Player.hpp"
 #include "Figure.hpp"
+#include "Move.hpp"
 #include <string>
 
 class Position;
 
 class ConsolePlayer: public Player {
 public:
-  ConsolePlayer(const char* name, FigureColour colour) : Player(name, colour) {};
+  ConsolePlayer(const char* name, FigureColour colour);
+
   Move getMove();
+  void putMove(Move oponent) { (void)oponent; };
+
   Position getPosition();
 
 private:

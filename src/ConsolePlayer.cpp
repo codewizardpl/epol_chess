@@ -4,6 +4,8 @@
 #include "Move.hpp"
 #include "Position.hpp"
 
+ConsolePlayer::ConsolePlayer(const char* name, FigureColour colour) : Player(name, colour) {};
+
 Move
 ConsolePlayer::getMove() {
   std::cout << getName() << " move:";

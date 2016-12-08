@@ -16,6 +16,9 @@ public:
 	Move(Position start, Position stop)
 		: m_start(start), m_stop(stop)
 	{}
+	Move() : Move(Position(0,0), Position(0,0))
+	{}
+
 
 	Position getStart() { return m_start; }
 	Position getStop() { return m_stop; }

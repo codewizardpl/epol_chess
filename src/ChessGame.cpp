@@ -1,8 +1,13 @@
+
+#include <memory>
+#include <string>
+
 #include "ChessGame.hpp"
 #include "Figures.hpp"
 #include "ConsolePlayer.hpp"
 #include "GameLogic.hpp"
 #include "ConsoleDisplay.hpp"
+#include "NetworkPlayer.hpp"
 
 
 ChessGame::ChessGame() {}
@@ -11,17 +16,37 @@ ChessGame::~ChessGame() {}
 
 void ChessGame::run()
 {
+	std::vector<std::unique_ptr<Player>> players;
     auto consoleDisplay = ConsoleDisplay();
+
+    std::string answer;
+    std::cout <<  "Network player (y/n)?: ";
+    std::cin >> answer;
+    if (answer == "n") {
+    	players.push_back(move(unique_ptr<Player>(new ConsolePlayer("white player", FigureColour::White))));
+    	players.push_back(move(unique_ptr<Player>(new ConsolePlayer("black player", FigureColour::Black))));
+    } else {
+    	std::cout <<  "Which side would you play (white/black)?: ";
+    	std::cin >> answer;
+    	if (answer == "white")
+    	{
+    		players.push_back(move(unique_ptr<Player>(new ConsolePlayer("white player", FigureColour::White))));
+    		players.push_back(move(unique_ptr<Player>(new NetworkPlayer("black player", FigureColour::Black))));
+    	} else {
+    		players.push_back(move(unique_ptr<Player>(new NetworkPlayer("white player", FigureColour::White))));
+    		players.push_back(move(unique_ptr<Player>(new ConsolePlayer("black player", FigureColour::Black))));
+    	}
+    }
+
     consoleDisplay.Display(board);
 
-    ConsolePlayer white("white player", FigureColour::White);
-    ConsolePlayer black("black player", FigureColour::Black);
     GameLogic logic;
 
-    while (1) {
-      logic.makeMove(board, white);
+    while (1)
+    {
+      logic.makeMove(board, *players[0]);
       consoleDisplay.Display(board);
-      logic.makeMove(board, black);
+      logic.makeMove(board, *players[1]);
       consoleDisplay.Display(board);
     }
     
