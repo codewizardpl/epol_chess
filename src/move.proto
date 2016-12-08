@@ -1,0 +1,5 @@
+package chess;
+message Move {
+	required string from = 1;
+	required string to = 2;
+}
