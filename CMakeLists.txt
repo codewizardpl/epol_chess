@@ -18,6 +18,7 @@ set(source
     "src/FigurePath.cpp"
     "src/GameLogic.cpp"
     "src/ConsolePlayer.cpp"
+    "src/Move.cpp"
     "src/Player.cpp"
     "src/Position.cpp"
     "src/PuzzleLogic.cpp"
