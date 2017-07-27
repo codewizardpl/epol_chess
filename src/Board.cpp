@@ -8,36 +8,30 @@ Board::Board() {
     m_figures.resize(size);
 }
 
-int Board::calcIndex(int x, int y) {
-    return x + 8*y;
+int Board::calcIndex(const Position& position) const {
+    return position.getHorizontal() + 8*position.getVertical();
 }
 
-Figure& Board::get(int x, int y) {
-    int index = calcIndex(x, y);
+Figure& Board::get(const Position& position) {
+    int index = calcIndex(position);
 
     return *m_figures[index];
 }
 
-unique_ptr<Figure> Board::remove(int x, int y) {
-    int index = calcIndex(x, y);
+unique_ptr<Figure> Board::remove(const Position& position) {
+    int index = calcIndex(position);
 
     return unique_ptr<Figure>(move(m_figures[index]));
 }
 
-void Board::set(int x, int y, Figure *fig) {
-    int index = calcIndex(x, y);
+void Board::set(const Position& position, Figure *fig) {
+    int index = calcIndex(position);
 
     m_figures[index] = move(unique_ptr<Figure>(fig)); //.reset(fig);
 }
 
-void Board::moveFigure(Move m) {
-    int startCol = m.getStart().getHorizontal(); // column
-    int startRow = m.getStart().getVertical(); // row
+void Board::moveFigure(Move move) {
+    unique_ptr<Figure> tmpFig = remove(move.getStart());
 
-    unique_ptr<Figure> tmpFig = remove(startCol, startRow);
-
-    int stopCol = m.getStop().getHorizontal(); // column
-    int stopRow = m.getStop().getVertical(); // row
-
-    m_figures[calcIndex(stopCol, stopRow)] = move(tmpFig);
+    m_figures[calcIndex(move.getStop())] = std::move(tmpFig);
 }

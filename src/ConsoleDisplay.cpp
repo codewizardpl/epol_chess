@@ -12,7 +12,8 @@ void ConsoleDisplay::Display(Board &board){
     for (int height = 7; height >=0; --height) {
         cout<<  "\033[1;31m" << height +1<<" " << "\033[1;37m";
         for (int width  = 0; width < 8; ++width) {
-            Figure &figure = board.get(width,height);
+            const Position position(width, height);
+            Figure &figure = board.get(position);
             cout << GetSymbol(figure)<<" ";
         }
         cout<< "\033[1;32m" << height +1 << "\033[1;37m"<<endl;
@@ -20,16 +21,17 @@ void ConsoleDisplay::Display(Board &board){
     cout<< "\033[1;32m" << "+ a b c d e f g h +" << "\033[0;37m" <<endl;
 
 }
-void ConsoleDisplay::Display(Board &board, set<Position> &position){
+void ConsoleDisplay::Display(Board &board, set<Position> &positions){
 
     cout<< "\033[1;31m" << "+ a b c d e f g h +" << "\033[1;37m"  << endl;
     for (int height = 7; height >=0; --height) {
         cout<<  "\033[1;31m" << height +1<<" " << "\033[1;37m";
         for (int width  = 0; width < 8; ++width) {
-            if(isRestrictedField(position, width,  height)){
+            if(isRestrictedField(positions, width,  height)){
                 cout <<"* ";
             }else{
-                Figure &figure = board.get(width,height);
+                const Position position(width, height);
+                Figure &figure = board.get(position);
                 cout << GetSymbol(figure)<<" ";
             }
         }

@@ -17,21 +17,19 @@ void PuzzleLogic::setFigure(Board& board, Player& player, FigureType ) {
 
 void
 PuzzleLogic::updateBoard(Board& board, Position& position, Figure* figure) {
-  board.set(position.getHorizontal(), position.getVertical(), figure);
+  board.set(position, figure);
 }
 
 bool
 PuzzleLogic::validatePosition(Board& board, Player& , Position& position, Figure* figure) {
-  Figure& f1 = board.get(position.getHorizontal(),
-			 position.getVertical());
+  Figure& f1 = board.get(position);
   if (&f1 != nullptr) {
     return false;
   }
   std::set<Position> possibleMoves = figure->getPossibleMoves(position);
   for (auto it = possibleMoves.begin(); it != possibleMoves.end(); ++it) {
     Position pos = *it;
-    Figure& f = board.get(pos.getHorizontal(),
-			  pos.getVertical());
+    Figure& f = board.get(pos);
     if (&f != nullptr) {
       return false;
     }

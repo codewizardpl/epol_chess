@@ -31,8 +31,7 @@ GameLogic::validateMove(Board& board, Player& player, Move& move) {
   if (!move.validateCoordinates()) {
     return false;
   }
-  Figure& figure = board.get(move.getStart().getHorizontal(),
-			     move.getStart().getVertical());
+  Figure& figure = board.get(move.getStart());
   if (&figure == nullptr) {
     std::cout << "no figure at start position" << std::endl;
     return false; // no figure at start position
@@ -42,8 +41,7 @@ GameLogic::validateMove(Board& board, Player& player, Move& move) {
     return false; // trying to move the oponent's figure
   }
  
-  Figure& captured_figure = board.get(move.getStop().getHorizontal(),
-				      move.getStop().getVertical());
+  Figure& captured_figure = board.get(move.getStop());
   bool capture = (&captured_figure == nullptr ? false : true);
   if (capture && captured_figure.getColour() == player.getColour()) {
     std::cout << "trying to capture own figure" << std::endl;
