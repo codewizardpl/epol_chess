@@ -1,12 +1,16 @@
-#include <memory>
-#include <string>
-
 #include "ChessGame.hpp"
+
 #include "Figures.hpp"
 #include "ConsolePlayer.hpp"
-#include "GameLogic.hpp"
-#include "ConsoleDisplay.hpp"
 #include "NetworkPlayer.hpp"
+#include "Board.hpp"
+#include "Player.hpp"
+#include "Figure.hpp"
+#include "Move.hpp"
+
+#include <iostream>
+#include <memory>
+#include <string>
 
 using namespace std;
 
@@ -17,41 +21,87 @@ ChessGame::~ChessGame()
 {}
 
 void ChessGame::run() {
-    setupBoard();
-    std::vector<std::unique_ptr<Player>> players;
-    auto consoleDisplay = ConsoleDisplay();
-
     std::string answer;
     std::cout <<  "Network player (y/n)?: ";
     std::cin >> answer;
     if (answer == "n") {
-    	players.push_back(move(unique_ptr<Player>(new ConsolePlayer("white player", FigureColour::White))));
-    	players.push_back(move(unique_ptr<Player>(new ConsolePlayer("black player", FigureColour::Black))));
+    	whitePlayer = unique_ptr<Player>(new ConsolePlayer("white player", FigureColour::White));
+    	blackPlayer = unique_ptr<Player>(new ConsolePlayer("black player", FigureColour::Black));
     } else {
-    	std::cout <<  "Which side would you play (white/black)?: ";
+    	std::cout <<  "Which side would you like to play (white/black)?: ";
     	std::cin >> answer;
     	if (answer == "white")
     	{
-    		players.push_back(move(unique_ptr<Player>(new ConsolePlayer("white player", FigureColour::White))));
-    		players.push_back(move(unique_ptr<Player>(new NetworkPlayer("black player", FigureColour::Black))));
+            whitePlayer = unique_ptr<Player>(new ConsolePlayer("white player", FigureColour::White));
+            blackPlayer = unique_ptr<Player>(new NetworkPlayer("black player", FigureColour::Black));
     	} else {
-    		players.push_back(move(unique_ptr<Player>(new NetworkPlayer("white player", FigureColour::White))));
-    		players.push_back(move(unique_ptr<Player>(new ConsolePlayer("black player", FigureColour::Black))));
+            whitePlayer = unique_ptr<Player>(new NetworkPlayer("white player", FigureColour::White));
+            blackPlayer = unique_ptr<Player>(new ConsolePlayer("black player", FigureColour::Black));
     	}
     }
 
-    consoleDisplay.Display(board);
+    mainLoop();    
+}
 
-    GameLogic logic;
-
+void ChessGame::mainLoop()
+{
+    setupBoard();
     while (1)
     {
-      logic.makeMove(board, *players[0]);
-      consoleDisplay.Display(board);
-      logic.makeMove(board, *players[1]);
-      consoleDisplay.Display(board);
+        consoleDisplay.Display(board);
+        makeMove(board, *whitePlayer);
+        consoleDisplay.Display(board);
+        makeMove(board, *blackPlayer);
     }
-    
+
+}
+
+void ChessGame::makeMove(Board& board, Player& player) {
+    Move move = player.getMove();
+    while (validateMove(board, player, move) == false) {
+        move = player.getMove();
+    }
+    updateBoard(board, move);
+}
+
+void ChessGame::updateBoard(Board& board, Move& move) {
+    board.moveFigure(move);
+}
+
+bool ChessGame::validateMove(Board& board, Player& player, Move& move) {
+    if (!move.validateCoordinates()) {
+        return false;
+    }
+    Figure& figure = board.get(move.getStart());
+    if (&figure == nullptr) {
+        std::cout << "no figure at start position" << std::endl;
+        return false; // no figure at start position
+    }
+    if (figure.getColour() != player.getColour()) {
+        std::cout << "trying to move the oponent's figure" << std::endl;
+        return false; // trying to move the oponent's figure
+    }
+ 
+    Figure& captured_figure = board.get(move.getStop());
+    bool capture = (&captured_figure == nullptr ? false : true);
+    if (capture && captured_figure.getColour() == player.getColour()) {
+        std::cout << "trying to capture own figure" << std::endl;
+        return false; // trying to capture own figure
+    }
+ 
+    FigurePath path = figure.validateMove(move,
+					(capture ? FigureMoveType::Strike : FigureMoveType::Move));
+    if (!path.isLegal()) {
+        std::cout << "illegal move " << (figure.getType() == FigureType::Pawn ? "pawn" : "other")
+	          << std::endl;
+        return false; // incorrect move
+    }
+
+    //if (!board.figuresOnPath(path)) {
+    //  return false; // move blocked by other figures
+    //}
+
+    return true;
 }
 
 void ChessGame::setupBoard()
