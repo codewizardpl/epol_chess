@@ -19,6 +19,7 @@ set(source
     "src/GameLogic.cpp"
     "src/ConsolePlayer.cpp"
     "src/Player.cpp"
+    "src/Position.cpp"
     "src/PuzzleLogic.cpp"
     "src/FigurePawn.cpp"
     "src/FigureKing.cpp"

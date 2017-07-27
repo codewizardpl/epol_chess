@@ -3,72 +3,32 @@
 
 #include <iostream>
 
-class Position
-{
-	friend std::ostream& operator<<(std::ostream& o, const Position& p);
+class Position {
 
 public:
+    Position(const int _horizontal, const int _vertical);
 
-    Position(int horizontal, int vertical) : m_horizontal(horizontal), m_vertical(vertical)
-    {
-    }
+    int getHorizontal() const;
 
-    int getHorizontal() const
-    {
-        return m_horizontal;
-    }
+    int getVertical() const;
 
+    Position operator-(const Position &other) const;
 
-    int getVertical() const
-    {
-        return m_vertical;
-    }
+    Position operator+(const Position &other) const;
 
-    Position operator-(const Position &other) const
-    {
-        return Position(m_horizontal - other.m_horizontal,
-                        m_vertical - other.m_vertical);
-    }
+    bool operator==(const Position &other) const;
 
+    bool operator<(const Position &other) const;
 
-    Position operator+(const Position &other) const
-    {
-        return Position(m_horizontal + other.m_horizontal,
-                        m_vertical + other.m_vertical);
-    }
-
-
-    bool operator==(const Position &other) const
-    {
-        return m_horizontal == other.m_horizontal &&
-               m_vertical == other.m_vertical;
-    }
-
-    bool operator<(const Position &other) const
-    {
-        int v1 = m_horizontal * 8 + m_vertical;
-        int v2 = other.m_horizontal * 8 + other.m_vertical;
-        return v1 < v2;
-    }
-
-    bool validateCoordinates()
-    {
-        return m_horizontal >=0 && m_horizontal < 8 &&
-               m_vertical >= 0 && m_vertical < 8;
-    }
+    bool validateCoordinates() const;
 
 private:
-
-    int m_horizontal;
-    int m_vertical;
+    int horizontal;
+    int vertical;
 
 };
 
-inline std::ostream& operator<<(std::ostream& o, const Position& p)
-{
-	o << "[" << p.m_horizontal <<  "," << p.m_vertical  << "]";
-	return o;
-}
+std::ostream& operator<<(std::ostream& out, const Position& position);
 
 class PositionValidator
 {
@@ -90,4 +50,4 @@ private:
 
 };
 
-#endif /* INCLUDE_POSITION_HPP_ */
+#endif
