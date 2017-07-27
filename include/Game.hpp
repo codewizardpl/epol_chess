@@ -3,11 +3,10 @@
 #include "Board.hpp"
 
 class Game {
-    Board board;
+
 public:
-    Game(){};
-    virtual void setupBoard(){};
-    virtual void run(){};
+    Game() {};
+    virtual void run() {};
 };
 
 #endif

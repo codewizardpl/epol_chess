@@ -4,13 +4,15 @@
 #include "Game.hpp"
 
 class PuzzleGame: public Game{
-    Board board;
     
 public:
     PuzzleGame();
     virtual ~PuzzleGame();
-    virtual void setupBoard();
     virtual void run();
+
+private:
+    void setupBoard();
+    Board board;
 };
 
 #endif

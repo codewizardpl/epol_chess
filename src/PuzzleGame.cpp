@@ -12,14 +12,15 @@ PuzzleGame::~PuzzleGame() {}
 
 void PuzzleGame::run()
 {
-  PuzzleLogic puzzle;
-  auto consoleDisplay = ConsoleDisplay();
-  ConsolePlayer white("white player", FigureColour::White);
-  consoleDisplay.Display(board);
-  for (int i = 0; i < 8; ++i) {
-    puzzle.setFigure(board, white, FigureType::Queen);
+    setupBoard();
+    PuzzleLogic puzzle;
+    auto consoleDisplay = ConsoleDisplay();
+    ConsolePlayer white("white player", FigureColour::White);
     consoleDisplay.Display(board);
-  }
+    for (int i = 0; i < 8; ++i) {
+        puzzle.setFigure(board, white, FigureType::Queen);
+        consoleDisplay.Display(board);
+    }
 }
 
 void PuzzleGame::setupBoard()

@@ -10,13 +10,15 @@
 
 using namespace std;
 
-ChessGame::ChessGame() {}
+ChessGame::ChessGame()
+{}
 
-ChessGame::~ChessGame() {}
+ChessGame::~ChessGame()
+{}
 
-void ChessGame::run()
-{
-	std::vector<std::unique_ptr<Player>> players;
+void ChessGame::run() {
+    setupBoard();
+    std::vector<std::unique_ptr<Player>> players;
     auto consoleDisplay = ConsoleDisplay();
 
     std::string answer;
