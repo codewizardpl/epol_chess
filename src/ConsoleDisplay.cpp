@@ -1,5 +1,6 @@
 #include "ConsoleDisplay.hpp"
 #include <iostream>
+
 using namespace std;
 
 ConsoleDisplay::ConsoleDisplay(){

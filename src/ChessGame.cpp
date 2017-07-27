@@ -1,4 +1,3 @@
-
 #include <memory>
 #include <string>
 
@@ -9,6 +8,7 @@
 #include "ConsoleDisplay.hpp"
 #include "NetworkPlayer.hpp"
 
+using namespace std;
 
 ChessGame::ChessGame() {}
 

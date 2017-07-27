@@ -6,15 +6,17 @@
 #include "Figure.hpp"
 #include "Position.hpp"
 
+class ConsoleDisplay {
 
-class ConsoleDisplay
-{
 public:
-	ConsoleDisplay();
-        void Display(Board &board);
-        void Display(Board &board, set<Position> &position);
+    ConsoleDisplay();
+    void Display(Board &board);
+    void Display(Board &board, std::set<Position> &position);
+
 private:
-        char GetSymbol(Figure &figure);
-        bool isRestrictedField(set<Position> &position, int x, int y);
+    char GetSymbol(Figure &figure);
+    bool isRestrictedField(std::set<Position> &position, int x, int y);
+
 };
+
 #endif
