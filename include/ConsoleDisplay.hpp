@@ -10,11 +10,11 @@ class ConsoleDisplay {
 
 public:
     ConsoleDisplay();
-    void Display(Board &board);
-    void Display(Board &board, std::set<Position> &position);
+    void display(const Board &board);
+    void display(const Board &board, std::set<Position> &position);
 
 private:
-    char GetSymbol(Figure &figure);
+    char getSymbol(const Figure figure);
     bool isRestrictedField(std::set<Position> &position, int x, int y);
 
 };

@@ -4,34 +4,40 @@
 using namespace std;
 
 Board::Board() {
-    cout << "Board is ready!" << endl;
-    m_figures.resize(size);
 }
 
 int Board::calcIndex(const Position& position) const {
-    return position.getHorizontal() + 8*position.getVertical();
+    return position.getHorizontal() +
+        WIDTH * position.getVertical();
 }
 
-Figure& Board::get(const Position& position) {
-    int index = calcIndex(position);
-
-    return *m_figures[index];
+bool Board::hasFigure(const Position& position) const {
+    return getFigure(position) != FigureType::None;
 }
 
-unique_ptr<Figure> Board::remove(const Position& position) {
+FigureType Board::getFigure(const Position& position) const {
     int index = calcIndex(position);
-
-    return unique_ptr<Figure>(move(m_figures[index]));
+    return m_figures[index].getType();
 }
 
-void Board::set(const Position& position, Figure *fig) {
+FigureColour Board::getFigureColour(const Position& position) const {
     int index = calcIndex(position);
+    return m_figures[index].getColour();
+}
 
-    m_figures[index] = move(unique_ptr<Figure>(fig)); //.reset(fig);
+Figure Board::get(const Position& position) const {
+    int index = calcIndex(position);
+    return m_figures[index];
+}
+
+void Board::set(const Position& position, Figure fig) {
+    int index = calcIndex(position);
+    m_figures[index] = fig;
 }
 
 void Board::moveFigure(Move move) {
-    unique_ptr<Figure> tmpFig = remove(move.getStart());
-
-    m_figures[calcIndex(move.getStop())] = std::move(tmpFig);
+    Figure tmpFig = get(move.getStart());
+    set(move.getStop(), tmpFig);
+    set(move.getStart(), Figure(FigureType::None, FigureColour::None));
 }
+

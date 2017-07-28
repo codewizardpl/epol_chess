@@ -3,8 +3,6 @@
 #include "Game.hpp"
 #include "PuzzleGame.hpp"
 #include "ChessGame.hpp"
-#include "PuzzleGame.hpp"
-#include "FigureBishop.hpp"
 
 using namespace std;
 

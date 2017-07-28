@@ -3,61 +3,54 @@
 
 using namespace std;
 
-ConsoleDisplay::ConsoleDisplay(){
-
+ConsoleDisplay::ConsoleDisplay() {
 }
 
-void ConsoleDisplay::Display(Board &board){
-    cout<< "\033[1;31m" << "+ a b c d e f g h +" << "\033[1;37m"  << endl;
+void ConsoleDisplay::display(const Board &board) {
+    cout << "+ a b c d e f g h +" << endl;
     for (int height = 7; height >=0; --height) {
-        cout<<  "\033[1;31m" << height +1<<" " << "\033[1;37m";
+        cout << height+1 << " ";
         for (int width  = 0; width < 8; ++width) {
             const Position position(width, height);
-            Figure &figure = board.get(position);
-            cout << GetSymbol(figure)<<" ";
+            const Figure figure = board.get(position);
+            cout << getSymbol(figure) << " ";
         }
-        cout<< "\033[1;32m" << height +1 << "\033[1;37m"<<endl;
+        cout << height +1 << endl;
     }
-    cout<< "\033[1;32m" << "+ a b c d e f g h +" << "\033[0;37m" <<endl;
+    cout << "+ a b c d e f g h +" << endl;
 
 }
-void ConsoleDisplay::Display(Board &board, set<Position> &positions){
+void ConsoleDisplay::display(const Board &board, set<Position> &positions) {
 
-    cout<< "\033[1;31m" << "+ a b c d e f g h +" << "\033[1;37m"  << endl;
+    cout << "+ a b c d e f g h +" << endl;
     for (int height = 7; height >=0; --height) {
-        cout<<  "\033[1;31m" << height +1<<" " << "\033[1;37m";
+        cout << height+1 << " ";
         for (int width  = 0; width < 8; ++width) {
-            if(isRestrictedField(positions, width,  height)){
-                cout <<"* ";
-            }else{
+            if (isRestrictedField(positions, width, height)) {
+                cout << "* ";
+            } else {
                 const Position position(width, height);
-                Figure &figure = board.get(position);
-                cout << GetSymbol(figure)<<" ";
+                Figure figure = board.get(position);
+                cout << getSymbol(figure) << " ";
             }
         }
-        cout<< "\033[1;32m" << height +1 << "\033[1;37m"<<endl;
+        cout << height+1 << endl;
     }
-    cout<< "\033[1;32m" << "+ a b c d e f g h +" << "\033[0;37m" <<endl;
+    cout << "+ a b c d e f g h +" << endl;
 }
 
 bool ConsoleDisplay::isRestrictedField(set<Position> &position, int x, int y){
 
-    if(true){
+    if (true) {
         return true;
-    }else{
+    } else {
         return true;
     }
 }
 
-char ConsoleDisplay::GetSymbol(Figure&figure)
-{
-    if(&figure == nullptr){
-        return'.';
-    }else{
-        char symbol = 'w';
-        FigureType figureType = figure.getType();
-        FigureColour  figureColor = figure.getColour();
-        switch (figureType) {
+char ConsoleDisplay::getSymbol(const Figure figure) {
+    char symbol = 'w';
+    switch (figure.getType()) {
         case FigureType::Rook:
             symbol = 'r';
             break;
@@ -76,14 +69,13 @@ char ConsoleDisplay::GetSymbol(Figure&figure)
         case FigureType::Pawn:
             symbol = 'p';
             break;
+        case FigureType::None:
         default:
             return '.';
             break;
-        }
-        if(figureColor==FigureColour::White){
-            return symbol -32;
-        }
-        return symbol;
     }
-
+    if (figure.getColour() == FigureColour::White) {
+        return symbol -32;
+    }
+    return symbol;
 }

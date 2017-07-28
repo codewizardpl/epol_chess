@@ -3,6 +3,7 @@
 #include "Board.hpp"
 #include "Game.hpp"
 #include "Player.hpp"
+#include "Position.hpp"
 
 class PuzzleGame: public Game {
     
@@ -19,14 +20,9 @@ private:
   
     bool validatePosition(
             Board& board,
-            Player& player,
-            Position& position,
-            Figure* figure);
+            Position& position);
 
-    void updateBoard(
-            Board& board,
-            Position& position,
-            Figure* figure);
+    std::set<Position> getQueenPossibleMoves(Position start);
 
     Board board;
 };

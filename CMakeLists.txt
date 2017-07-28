@@ -14,18 +14,11 @@ set(source
     "src/Board.cpp"
     "src/ConsoleDisplay.cpp"
     "src/Figure.cpp"
-    "src/FigurePawn.cpp"
     "src/FigurePath.cpp"
     "src/ConsolePlayer.cpp"
     "src/Move.cpp"
     "src/Player.cpp"
     "src/Position.cpp"
-    "src/FigurePawn.cpp"
-    "src/FigureKing.cpp"
-    "src/FigureQueen.cpp"
-    "src/FigureRook.cpp"
-    "src/FigureKnight.cpp"
-    "src/FigureBishop.cpp"
     "src/NetworkPlayer.cpp")
 
 add_executable(${PROJECT_NAME} ${source})

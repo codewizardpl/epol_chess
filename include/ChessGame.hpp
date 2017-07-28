@@ -18,6 +18,15 @@ private:
     void makeMove(Board& board, Player& player);
     void updateBoard(Board& board, Move&  move);
     bool validateMove(Board& board, Player& player, Move& move);
+/*
+    virtual FigurePath validatePawnMove(Move move, FigureMoveType moveType);
+    bool isPawnStep(Move move);
+    bool isPawnDoubleStep(Move move);
+    bool isPawnLeftStrike(Move move);
+    bool isPawnRightStrike(Move move);
+    bool isPawnFromBaseline(Move move);
+    int forwardDirection();
+*/
     Board board;
     std::unique_ptr<Player> whitePlayer;
     std::unique_ptr<Player> blackPlayer;
