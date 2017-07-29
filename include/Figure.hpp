@@ -1,47 +1,34 @@
-#ifndef FIGURE
-#define FIGURE
-
-#include <set>
-#include "Move.hpp"
-#include "FigurePath.hpp"
-#include "Position.hpp"
+#ifndef FIGURE_HPP
+#define FIGURE_HPP
 
 enum class FigureType {
+    None,
     Pawn,
     Knight,
     Bishop,
     Rook,
     Queen,
-    King,
-    None
+    King
 };
 
 enum class FigureColour {
+    None,
     White,
-    Black,
-    None
+    Black
 };
-
-enum class FigureMoveType {
-    Move,
-    Strike
-};
-
 
 class Figure {
 
 public:
-    FigureColour getColour() const;
-    FigureType getType() const;
     Figure();
     Figure(FigureType type, FigureColour colour);
     virtual ~Figure() {}
-
+    FigureColour getColour() const;
+    FigureType getType() const;
 
 private:
     FigureColour colour;
     FigureType type;
-
 };
 
 #endif

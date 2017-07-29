@@ -34,11 +34,6 @@ bool Position::operator<(const Position &other) const {
     return v1 < v2;
 }
 
-bool Position::validateCoordinates() const {
-    return horizontal >=0 && horizontal < 8 &&
-           vertical >= 0 && vertical < 8;
-}
-
 std::ostream& operator<<(std::ostream& out, const Position& position) {
     out << "[";
     out << position.getHorizontal();
@@ -47,3 +42,4 @@ std::ostream& operator<<(std::ostream& out, const Position& position) {
     out << "]";
     return out;
 }
+

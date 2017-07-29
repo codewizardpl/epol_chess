@@ -1,9 +1,11 @@
 #ifndef PUZZLEGAME_HPP
 #define PUZZLEGAME_HPP
+
 #include "Board.hpp"
 #include "Game.hpp"
 #include "Player.hpp"
 #include "Position.hpp"
+#include <set>
 
 class PuzzleGame: public Game {
     
@@ -18,6 +20,8 @@ private:
             Position& position);
 
     std::set<Position> getQueenPossibleMoves(Position start);
+
+    bool validateCoordinates(const Position& position);
 
     Board board;
 };

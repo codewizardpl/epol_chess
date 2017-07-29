@@ -64,11 +64,13 @@ void ChessGame::makeMove(Board& board, Player& player, FigureColour col) {
 }
 
 void ChessGame::updateBoard(Board& board, Move& move) {
-    board.moveFigure(move);
+    Figure tmpFig = board.get(move.getStart());
+    board.set(move.getStop(), tmpFig);
+    board.set(move.getStart(), Figure(FigureType::None, FigureColour::None));
 }
 
 bool ChessGame::validateMove(Board& board, const FigureColour col, Move& move) {
-    if (!move.validateCoordinates()) {
+    if (!validateCoordinates(move)) {
         return false;
     }
 
@@ -105,6 +107,16 @@ bool ChessGame::validateMove(Board& board, const FigureColour col, Move& move) {
     //}
 
     return true;
+}
+
+bool ChessGame::validateCoordinates(const Move& move) {
+    return validateCoordinates(move.getStart()) &&
+           validateCoordinates(move.getStop());
+}
+
+bool ChessGame::validateCoordinates(const Position& position) {
+    return position.getHorizontal() >=0 && position.getHorizontal() < 8 &&
+           position.getVertical()>= 0 && position.getVertical() < 8;
 }
 
 void ChessGame::setupBoard()

@@ -1,5 +1,5 @@
-#ifndef INCLUDE_MOVE_HPP_
-#define INCLUDE_MOVE_HPP_
+#ifndef MOVE_HPP
+#define MOVE_HPP
 
 #include "Position.hpp"
 
@@ -12,13 +12,10 @@ public:
     const Position getStart() const;
     const Position getStop() const;
 
-    const Position getRelative() const;
-    bool validateCoordinates() const;
-
 private:
     Position start;
     Position stop;
 };
 
-
 #endif
+

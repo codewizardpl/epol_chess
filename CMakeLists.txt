@@ -14,7 +14,6 @@ set(source
     "src/Board.cpp"
     "src/ConsoleDisplay.cpp"
     "src/Figure.cpp"
-    "src/FigurePath.cpp"
     "src/ConsolePlayer.cpp"
     "src/Move.cpp"
     "src/Player.cpp"

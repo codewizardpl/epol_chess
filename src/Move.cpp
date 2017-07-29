@@ -17,12 +17,3 @@ const Position Move::getStop() const {
     return stop;
 }
 
-const Position Move::getRelative() const {
-    return start-stop;
-}
-
-bool Move::validateCoordinates() const {
-    return start.validateCoordinates() &&
-           stop.validateCoordinates();
-}
-

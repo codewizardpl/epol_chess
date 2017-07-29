@@ -30,13 +30,13 @@ bool PuzzleGame::validatePosition(
         Board& board,
         Position& position) {
     
-    if (board.hasFigure(position)) {
+    if (!board.isEmpty(position)) {
         return false;
     }
     std::set<Position> possibleMoves = getQueenPossibleMoves(position);
     for (auto it = possibleMoves.begin(); it != possibleMoves.end(); ++it) {
         Position pos = *it;
-        if (board.hasFigure(pos)) {
+        if (!board.isEmpty(pos)) {
             return false;
         }
     }
@@ -61,11 +61,11 @@ std::set<Position> PuzzleGame::getQueenPossibleMoves(Position start)
             result.insert(verticalLine);
 
         Position slashLine = Position(i, i-slashStart);
-        if (slashLine.validateCoordinates() && !(slashLine == start))
+        if (validateCoordinates(slashLine) && !(slashLine == start))
             result.insert(slashLine);
 
         Position backslashLine = Position(i, i+backslashStart);
-        if (backslashLine.validateCoordinates() && !(backslashLine == start))
+        if (validateCoordinates(backslashLine) && !(backslashLine == start))
             result.insert(backslashLine);
 
     }
@@ -73,3 +73,7 @@ std::set<Position> PuzzleGame::getQueenPossibleMoves(Position start)
     return result;
 }
 
+bool PuzzleGame::validateCoordinates(const Position& position) {
+    return position.getHorizontal() >=0 && position.getHorizontal() < 8 &&
+           position.getVertical()>= 0 && position.getVertical() < 8;
+}
