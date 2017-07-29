@@ -13,11 +13,6 @@ public:
     virtual void run();
 
 private:
-    void setFigure(
-            Board& board,
-            Player& player,
-            FigureType figure);
-  
     bool validatePosition(
             Board& board,
             Position& position);

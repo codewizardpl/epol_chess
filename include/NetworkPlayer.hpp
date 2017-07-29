@@ -1,10 +1,3 @@
-/*
- * NetworkPlayer.hpp
- *
- *  Created on: 8 gru 2016
- *      Author: student
- */
-
 #ifndef INCLUDE_NETWORKPLAYER_HPP_
 #define INCLUDE_NETWORKPLAYER_HPP_
 
@@ -17,7 +10,7 @@ class Position;
 
 class NetworkPlayer: public Player {
 public:
-	NetworkPlayer(const char* name, FigureColour colour);
+	NetworkPlayer(const char* name);
 
 	Move getMove();
 	void putMove(Move oponent) { m_oponent_move = oponent; };

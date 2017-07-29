@@ -24,18 +24,18 @@ void ChessGame::run() {
     cout <<  "Network player (y/n)?: ";
     cin >> answer;
     if (answer == "n") {
-    	whitePlayer = unique_ptr<Player>(new ConsolePlayer("white player", FigureColour::White));
-    	blackPlayer = unique_ptr<Player>(new ConsolePlayer("black player", FigureColour::Black));
+    	whitePlayer = unique_ptr<Player>(new ConsolePlayer("white player"));
+    	blackPlayer = unique_ptr<Player>(new ConsolePlayer("black player"));
     } else {
     	cout <<  "Which side would you like to play (white/black)?: ";
     	cin >> answer;
     	if (answer == "white")
     	{
-            whitePlayer = unique_ptr<Player>(new ConsolePlayer("white player", FigureColour::White));
-            blackPlayer = unique_ptr<Player>(new NetworkPlayer("black player", FigureColour::Black));
+            whitePlayer = unique_ptr<Player>(new ConsolePlayer("white player"));
+            blackPlayer = unique_ptr<Player>(new NetworkPlayer("black player"));
     	} else {
-            whitePlayer = unique_ptr<Player>(new NetworkPlayer("white player", FigureColour::White));
-            blackPlayer = unique_ptr<Player>(new ConsolePlayer("black player", FigureColour::Black));
+            whitePlayer = unique_ptr<Player>(new NetworkPlayer("white player"));
+            blackPlayer = unique_ptr<Player>(new ConsolePlayer("black player"));
     	}
     }
 
@@ -48,16 +48,16 @@ void ChessGame::mainLoop()
     while (1)
     {
         consoleDisplay.display(board);
-        makeMove(board, *whitePlayer);
+        makeMove(board, *whitePlayer, FigureColour::White);
         consoleDisplay.display(board);
-        makeMove(board, *blackPlayer);
+        makeMove(board, *blackPlayer, FigureColour::Black);
     }
 
 }
 
-void ChessGame::makeMove(Board& board, Player& player) {
+void ChessGame::makeMove(Board& board, Player& player, FigureColour col) {
     Move move = player.getMove();
-    while (validateMove(board, player, move) == false) {
+    while (validateMove(board, col, move) == false) {
         move = player.getMove();
     }
     updateBoard(board, move);
@@ -67,7 +67,7 @@ void ChessGame::updateBoard(Board& board, Move& move) {
     board.moveFigure(move);
 }
 
-bool ChessGame::validateMove(Board& board, Player& player, Move& move) {
+bool ChessGame::validateMove(Board& board, const FigureColour col, Move& move) {
     if (!move.validateCoordinates()) {
         return false;
     }
@@ -78,14 +78,14 @@ bool ChessGame::validateMove(Board& board, Player& player, Move& move) {
         return false; // no figure at start position
     }
 
-    if (figure.getColour() != player.getColour()) {
+    if (figure.getColour() != col) {
         cout << "trying to move the oponent's figure" << endl;
         return false; // trying to move the oponent's figure
     }
  
     Figure captured_figure = board.get(move.getStop());
     bool capture = (&captured_figure == nullptr ? false : true);
-    if (capture && captured_figure.getColour() == player.getColour()) {
+    if (capture && captured_figure.getColour() == col) {
         cout << "trying to capture own figure" << endl;
         return false; // trying to capture own figure
     }

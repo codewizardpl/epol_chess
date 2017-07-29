@@ -10,7 +10,7 @@ class Position;
 
 class ConsolePlayer: public Player {
 public:
-  ConsolePlayer(const char* name, FigureColour colour);
+  ConsolePlayer(const char* name);
 
   Move getMove();
   void putMove(Move oponent) { (void)oponent; };

@@ -1,17 +1,11 @@
 #include "Player.hpp"
 
-Player::Player(const char* name, FigureColour colour) 
-  : m_name(name),
-    m_colour(colour)
-{
+Player::Player(const char* name):
+    m_name(name)
+{}
+
+
+const char* Player::getName() {
+    return m_name;
 }
 
-FigureColour
-Player::getColour() {
-  return m_colour;
-}
-
-const char*
-Player::getName() {
-  return m_name;
-}

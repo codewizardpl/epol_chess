@@ -12,29 +12,24 @@ PuzzleGame::~PuzzleGame()
 
 void PuzzleGame::run() {
     auto consoleDisplay = ConsoleDisplay();
-    ConsolePlayer white("white player", FigureColour::White);
-    consoleDisplay.display(board);
-    for (int i = 0; i < 8; ++i) {
-        setFigure(board, white, FigureType::Queen);
+    ConsolePlayer player("puzzle player");
+    int queensToPlace = 8;
+    while (queensToPlace>0) {
         consoleDisplay.display(board);
+        Position position = player.getPosition();
+        Figure queenFigure(FigureType::Queen, FigureColour::White);
+        if (validatePosition(board, position)) {
+            board.set(position, queenFigure);
+            queensToPlace--;
+        }
     }
+    consoleDisplay.display(board);
 }
-
-void PuzzleGame::setFigure(Board& board, Player& player, FigureType ) {
-    Position position = player.getPosition();
-    Figure figure(FigureType::Queen, player.getColour());
-    while (validatePosition(board, position) == false) {
-        position = player.getPosition();
-    }
-    board.set(position, figure);
-}
-
 
 bool PuzzleGame::validatePosition(
         Board& board,
         Position& position) {
     
-    Figure f1 = board.get(position);
     if (board.hasFigure(position)) {
         return false;
     }

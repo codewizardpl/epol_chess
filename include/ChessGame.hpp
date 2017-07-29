@@ -15,9 +15,9 @@ public:
 private:
     void setupBoard();
     void mainLoop();
-    void makeMove(Board& board, Player& player);
+    void makeMove(Board& board, Player& player, FigureColour col);
     void updateBoard(Board& board, Move&  move);
-    bool validateMove(Board& board, Player& player, Move& move);
+    bool validateMove(Board& board, const FigureColour col, Move& move);
 /*
     virtual FigurePath validatePawnMove(Move move, FigureMoveType moveType);
     bool isPawnStep(Move move);
