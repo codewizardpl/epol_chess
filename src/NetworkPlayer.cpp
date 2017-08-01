@@ -8,8 +8,8 @@
 #include "move.pb.h"
 
 NetworkPlayer::NetworkPlayer(const char* name):
-    Player(name)
-{};
+    Player(name) {
+}
 
 Move NetworkPlayer::getMove() {
     std::cout << getName() << " move:";

@@ -15,11 +15,11 @@ public:
     virtual void run();
 
 private:
-    bool validatePosition(
-            Board& board,
-            Position& position);
+    bool validatePosition(Position& position);
 
-    std::set<Position> getQueenPossibleMoves(Position start);
+    bool validateDirection(
+        const Position& current,
+        const Position& step);
 
     bool validateCoordinates(const Position& position);
 

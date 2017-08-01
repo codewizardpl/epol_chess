@@ -1,44 +1,44 @@
 #include "Position.hpp"
 
-Position::Position(const int _horizontal, const int _vertical):
-    horizontal(_horizontal),
-    vertical(_vertical)
+Position::Position(const int _column, const int _row):
+    column(_column),
+    row(_row)
 {}
 
-int Position::getHorizontal() const {
-    return horizontal;
+int Position::getColumn() const {
+    return column;
 }
 
-int Position::getVertical() const {
-    return vertical;
+int Position::getRow() const {
+    return row;
 }
 
 Position Position::operator-(const Position &other) const {
-    return Position(horizontal - other.horizontal,
-                    vertical - other.vertical);
+    return Position(column- other.column,
+                    row - other.row);
 }
 
 Position Position::operator+(const Position &other) const {
-    return Position(horizontal + other.horizontal,
-                    vertical + other.vertical);
+    return Position(column + other.column,
+                    row + other.row);
 }
 
 bool Position::operator==(const Position &other) const {
-    return horizontal == other.horizontal &&
-           vertical == other.vertical;
+    return column == other.column &&
+           row == other.row;
 }
-
+/*
 bool Position::operator<(const Position &other) const {
-    int v1 = horizontal * 8 + vertical;
-    int v2 = other.horizontal * 8 + other.vertical;
+    int v1 = column * 8 + row;
+    int v2 = other.column * 8 + other.row;
     return v1 < v2;
 }
-
+*/
 std::ostream& operator<<(std::ostream& out, const Position& position) {
     out << "[";
-    out << position.getHorizontal();
+    out << position.getColumn();
     out <<  ",";
-    out << position.getVertical();
+    out << position.getRow();
     out << "]";
     return out;
 }

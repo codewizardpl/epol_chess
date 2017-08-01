@@ -4,11 +4,11 @@
 #include "PuzzleGame.hpp"
 #include "Game.hpp"
 
-PuzzleGame::PuzzleGame()
-{}
+PuzzleGame::PuzzleGame() {
+}
 
-PuzzleGame::~PuzzleGame()
-{}
+PuzzleGame::~PuzzleGame() {
+}
 
 void PuzzleGame::run() {
     auto consoleDisplay = ConsoleDisplay();
@@ -18,7 +18,7 @@ void PuzzleGame::run() {
         consoleDisplay.show(board);
         Position position = player.getPosition();
         Figure queenFigure(FigureType::Queen, FigureColour::White);
-        if (validatePosition(board, position)) {
+        if (validatePosition(position)) {
             board.set(position, queenFigure);
             queensToPlace--;
         }
@@ -26,54 +26,29 @@ void PuzzleGame::run() {
     consoleDisplay.show(board);
 }
 
-bool PuzzleGame::validatePosition(
-        Board& board,
-        Position& position) {
-    
-    if (!board.isEmpty(position)) {
-        return false;
-    }
-    std::set<Position> possibleMoves = getQueenPossibleMoves(position);
-    for (auto it = possibleMoves.begin(); it != possibleMoves.end(); ++it) {
-        Position pos = *it;
-        if (!board.isEmpty(pos)) {
-            return false;
-        }
-    }
-    return true;
+bool PuzzleGame::validatePosition(Position& position) {
+    return
+        board.isEmpty(position) &&
+        validateDirection(position, Position(1,0)) &&
+        validateDirection(position, Position(1,1)) &&
+        validateDirection(position, Position(0,1)) &&
+        validateDirection(position, Position(-1,1)) &&
+        validateDirection(position, Position(-1,0)) &&
+        validateDirection(position, Position(-1,-1)) &&
+        validateDirection(position, Position(0,-1)) &&
+        validateDirection(position, Position(1,-1));
 }
 
-std::set<Position> PuzzleGame::getQueenPossibleMoves(Position start)
-{
-    std::set<Position> result;
-
-    int slashStart = start.getVertical() + start.getHorizontal();
-    int backslashStart = start.getVertical() - start.getHorizontal();
-
-    for (int i=0; i<8; i++)
-    {
-        Position horizontalLine = Position(i, start.getVertical());
-        if (!(horizontalLine == start))
-            result.insert(horizontalLine);
-
-        Position verticalLine = Position(start.getHorizontal(), i);
-        if (!(verticalLine == start))
-            result.insert(verticalLine);
-
-        Position slashLine = Position(i, i-slashStart);
-        if (validateCoordinates(slashLine) && !(slashLine == start))
-            result.insert(slashLine);
-
-        Position backslashLine = Position(i, i+backslashStart);
-        if (validateCoordinates(backslashLine) && !(backslashLine == start))
-            result.insert(backslashLine);
-
-    }
-
-    return result;
+bool PuzzleGame::validateDirection(
+        const Position& current,
+        const Position& step) {
+    const Position next = current + step;
+    return
+        !validateCoordinates(next) ||
+        (board.isEmpty(next) && validateDirection(next, step));
 }
 
 bool PuzzleGame::validateCoordinates(const Position& position) {
-    return position.getHorizontal() >=0 && position.getHorizontal() < 8 &&
-           position.getVertical()>= 0 && position.getVertical() < 8;
+    return position.getColumn() >=0 && position.getColumn() < 8 &&
+           position.getRow()>= 0 && position.getRow() < 8;
 }

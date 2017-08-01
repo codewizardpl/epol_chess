@@ -81,9 +81,9 @@ void Chess::validateMove(const Move& move) const {
 
 void Chess::validatePawnMove(const Move& move) const {
     Position delta = move.getStop() - move.getStart();
-    if (delta.getHorizontal() != 0)
+    if (delta.getColumn() != 0)
         throw IllegalMoveException("Pawn can't move vertically");
-    int steps = delta.getVertical();
+    int steps = delta.getRow();
     if (currentTurn == FigureColour::White) {
         if (steps < 0) throw IllegalMoveException(
                 "Wite Pawn can only move up");
@@ -96,7 +96,7 @@ void Chess::validatePawnMove(const Move& move) const {
     int baseline = 1;
     if (currentTurn == FigureColour::Black)
         baseline = 6;
-    if (move.getStart().getVertical()  == baseline) {
+    if (move.getStart().getRow()  == baseline) {
         if (steps>2)
             throw IllegalMoveException(
                     "Pawn can move at most 2 steps in first move");
@@ -109,14 +109,14 @@ void Chess::validatePawnMove(const Move& move) const {
 
 void Chess::validatePawnStrike(const Move& move) const {
     Position delta = move.getStop() - move.getStart();
-    int sideStep = delta.getHorizontal();
+    int sideStep = delta.getColumn();
     if (sideStep != 1 && sideStep != -1)
         throw IllegalMoveException(
                 "Pawn can only strike 1 step to left or right");
     int step = 1;
     if (currentTurn == FigureColour::Black)
         step = -1;
-    if (delta.getVertical() != step)
+    if (delta.getRow() != step)
         throw IllegalMoveException(
                 "Pawn can only strike 1 step forward");
 }

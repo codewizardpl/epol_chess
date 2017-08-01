@@ -6,20 +6,15 @@
 #include "Move.hpp"
 #include <string>
 
-class Position;
-
 class NetworkPlayer: public Player {
 public:
-	NetworkPlayer(const char* name);
-
-	Move getMove();
-	void putMove(Move oponent) { m_oponent_move = oponent; };
-
-  Position getPosition();
+    NetworkPlayer(const char* name);
+    Move getMove();
+    Position getPosition();
 
 private:
-  Position parsePosition(std::string input);
-  Move m_oponent_move;
+    Position parsePosition(std::string input);
+    Move m_oponent_move;
 };
 
-#endif /* INCLUDE_NETWORKPLAYER_HPP_ */
+#endif

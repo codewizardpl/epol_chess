@@ -9,7 +9,10 @@
 class ConsoleDisplay {
 
 public:
-    void show(const Board &board);
+    void show(const Board& board);
+private:
+    void showVerticalPositionSymbolsRow();
+    void showBoardRow(const Board& board, const int row);
 };
 
 #endif

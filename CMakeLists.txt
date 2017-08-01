@@ -9,6 +9,7 @@ ADD_SUBDIRECTORY(proto)
 
 set(source
     "src/Position.cpp"
+    "src/PositionFormat.cpp"
     "src/Move.cpp"
     "src/Figure.cpp"
     "src/FigureSymbol.cpp"

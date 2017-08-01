@@ -30,11 +30,11 @@ bool Board::operator!=(const Board& other) {
 }
 
 Figure Board::get(const Position& position) const {
-    return figures[position.getVertical()][position.getHorizontal()];
+    return figures[position.getRow()][position.getColumn()];
 }
 
 void Board::set(const Position& position, Figure figure) {
-    figures[position.getVertical()][position.getHorizontal()] = figure;
+    figures[position.getRow()][position.getColumn()] = figure;
 }
 
 bool Board::isEmpty(const Position& position) const {

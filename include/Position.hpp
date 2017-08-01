@@ -6,11 +6,11 @@
 class Position {
 
 public:
-    Position(const int _horizontal, const int _vertical);
+    Position(const int _column, const int _row);
 
-    int getHorizontal() const;
+    int getColumn() const;
 
-    int getVertical() const;
+    int getRow() const;
 
     Position operator-(const Position &other) const;
 
@@ -18,11 +18,11 @@ public:
 
     bool operator==(const Position &other) const;
 
-    bool operator<(const Position &other) const;
+    //bool operator<(const Position &other) const;
 
 private:
-    int horizontal;
-    int vertical;
+    int column;
+    int row;
 };
 
 std::ostream& operator<<(std::ostream& out, const Position& position);
