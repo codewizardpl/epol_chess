@@ -22,10 +22,12 @@ class Figure {
 public:
     Figure();
     Figure(FigureType type, FigureColour colour);
-    virtual ~Figure() {}
+
+    bool operator==(const Figure& other);
+    bool operator!=(const Figure& other);
+
     FigureColour getColour() const;
     FigureType getType() const;
-
 private:
     FigureColour colour;
     FigureType type;

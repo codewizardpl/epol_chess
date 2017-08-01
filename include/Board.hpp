@@ -10,6 +10,13 @@ public:
     const int WIDTH = 8;
     const int HEIGHT = 8;
 
+    Board();
+    Board(const Board& other);
+
+    const Board& operator=(const Board& other);
+    bool operator==(const Board& other);
+    bool operator!=(const Board& other);
+
     Figure get(const Position& position) const;
     void set(const Position& position, Figure figure);
 

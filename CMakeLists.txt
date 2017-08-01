@@ -8,17 +8,20 @@ include_directories(include proto)
 ADD_SUBDIRECTORY(proto)
 
 set(source
-    "src/main.cpp"
-    "src/PuzzleGame.cpp"
-    "src/ChessGame.cpp"
+    "src/Position.cpp"
+    "src/Move.cpp"
+    "src/Figure.cpp"
+    "src/FigureSymbol.cpp"
     "src/Board.cpp"
     "src/ConsoleDisplay.cpp"
-    "src/Figure.cpp"
+    "src/IllegalMoveException.cpp"
+    "src/Chess.cpp"
+    "src/PuzzleGame.cpp"
+    "src/ChessGame.cpp"
     "src/ConsolePlayer.cpp"
-    "src/Move.cpp"
     "src/Player.cpp"
-    "src/Position.cpp"
-    "src/NetworkPlayer.cpp")
+    "src/NetworkPlayer.cpp"
+    "src/main.cpp")
 
 add_executable(${PROJECT_NAME} ${source})
 target_link_libraries(${PROJECT_NAME} proto ${Boost_SYSTEM_LIBRARY} ${PROTOBUF_LIBRARY})

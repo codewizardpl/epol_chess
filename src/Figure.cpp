@@ -10,6 +10,15 @@ Figure::Figure(FigureType _type, FigureColour _colour) {
     colour = _colour;
 }
 
+bool Figure::operator==(const Figure& other) {
+    return type == other.type &&
+           colour == other.colour;
+}
+
+bool Figure::operator!=(const Figure& other) {
+    return !(*this==other);
+}
+
 FigureColour Figure::getColour() const {
     return colour;
 }

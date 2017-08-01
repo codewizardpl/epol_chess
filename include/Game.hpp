@@ -3,10 +3,8 @@
 #include "Board.hpp"
 
 class Game {
-
 public:
-    Game() {};
-    virtual void run() {};
+    virtual void run() = 0;
 };
 
 #endif

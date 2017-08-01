@@ -5,29 +5,26 @@
 #include "Board.hpp"
 #include "Player.hpp"
 #include "ConsoleDisplay.hpp"
+#include "Chess.hpp"
+#include "IllegalMoveException.hpp"
 #include <memory>
 
 class ChessGame: public Game {
     
 public:
-    ChessGame();
-    virtual ~ChessGame();
+    ChessGame(
+            std::shared_ptr<Player> whitePlayer,
+            std::shared_ptr<Player> blackPlayer,
+            std::shared_ptr<ConsoleDisplay> _display);
     virtual void run();
 
 private:
-    void setupBoard();
-    void mainLoop();
-    void makeMove(Board& board, Player& player, FigureColour col);
-    void updateBoard(Board& board, Move&  move);
-    bool validateMove(Board& board, const FigureColour col, Move& move);
+    void setupBoard(Board& board);
+    void makeMove(Chess& chess, Player& player);
 
-    bool validateCoordinates(const Move& move);
-    bool validateCoordinates(const Position& position);
-
-    Board board;
-    std::unique_ptr<Player> whitePlayer;
-    std::unique_ptr<Player> blackPlayer;
-    ConsoleDisplay consoleDisplay;
+    std::shared_ptr<Player> whitePlayer;
+    std::shared_ptr<Player> blackPlayer;
+    std::shared_ptr<ConsoleDisplay> display;
 };
 
 #endif

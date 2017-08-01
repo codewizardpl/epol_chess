@@ -9,14 +9,7 @@
 class ConsoleDisplay {
 
 public:
-    ConsoleDisplay();
-    void display(const Board &board);
-    void display(const Board &board, std::set<Position> &position);
-
-private:
-    char getSymbol(const Figure figure);
-    bool isRestrictedField(std::set<Position> &position, int x, int y);
-
+    void show(const Board &board);
 };
 
 #endif

@@ -15,7 +15,7 @@ void PuzzleGame::run() {
     ConsolePlayer player("puzzle player");
     int queensToPlace = 8;
     while (queensToPlace>0) {
-        consoleDisplay.display(board);
+        consoleDisplay.show(board);
         Position position = player.getPosition();
         Figure queenFigure(FigureType::Queen, FigureColour::White);
         if (validatePosition(board, position)) {
@@ -23,7 +23,7 @@ void PuzzleGame::run() {
             queensToPlace--;
         }
     }
-    consoleDisplay.display(board);
+    consoleDisplay.show(board);
 }
 
 bool PuzzleGame::validatePosition(
