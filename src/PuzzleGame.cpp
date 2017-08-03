@@ -4,12 +4,6 @@
 #include "PuzzleGame.hpp"
 #include "Game.hpp"
 
-PuzzleGame::PuzzleGame() {
-}
-
-PuzzleGame::~PuzzleGame() {
-}
-
 void PuzzleGame::run() {
     auto consoleDisplay = ConsoleDisplay();
     ConsolePlayer player("puzzle player");
@@ -52,3 +46,4 @@ bool PuzzleGame::validateCoordinates(const Position& position) {
     return position.getColumn() >=0 && position.getColumn() < 8 &&
            position.getRow()>= 0 && position.getRow() < 8;
 }
+

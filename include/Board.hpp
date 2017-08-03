@@ -7,8 +7,8 @@
 class Board {
 
 public:
-    const int WIDTH = 8;
-    const int HEIGHT = 8;
+    static const int WIDTH = 8;
+    static const int HEIGHT = 8;
 
     Board();
     Board(const Board& other);
@@ -24,7 +24,7 @@ public:
     void setEmpty(const Position& position);
 
 private:
-    Figure figures[8][8];
+    Figure figures[WIDTH][HEIGHT];
 };
 
 #endif

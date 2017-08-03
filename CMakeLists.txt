@@ -14,6 +14,8 @@ set(source
     "src/Figure.cpp"
     "src/FigureSymbol.cpp"
     "src/Board.cpp"
+    "src/InitialChessBoardSetup.cpp"
+    "src/ConsoleChessPlayer.cpp"
     "src/ConsoleDisplay.cpp"
     "src/IllegalMoveException.cpp"
     "src/Chess.cpp"

@@ -1,43 +1,29 @@
 #include <iostream>
 #include "Board.hpp"
-#include "ConsoleDisplay.hpp"
+#include "InitialChessBoardSetup.hpp"
 #include "Game.hpp"
 #include "PuzzleGame.hpp"
 #include "ChessGame.hpp"
-#include "Player.hpp"
-#include "ConsolePlayer.hpp"
-#include "NetworkPlayer.hpp"
+#include "ConsoleChessPlayer.hpp"
 
 using namespace std;
 
 shared_ptr<ChessGame> setupChessGame() {
-    shared_ptr<Player> whitePlayer;
-    shared_ptr<Player> blackPlayer;
 
-    string answer;
-    cout <<  "Network player (y/n)?: ";
-    cin >> answer;
+    shared_ptr<Chess> chess(new Chess(
+                InitialChessBoardSetup::getBoard(),
+                FigureColour::White));
 
-    if (answer == "n") {
-    	whitePlayer.reset(new ConsolePlayer("white player"));
-    	blackPlayer.reset(new ConsolePlayer("black player"));
-    } else {
-    	cout <<  "Which side would you like to play (white/black)?: ";
-    	cin >> answer;
-    	if (answer == "white")
-    	{
-            whitePlayer.reset(new ConsolePlayer("white player"));
-            blackPlayer.reset(new NetworkPlayer("black player"));
-    	} else {
-            whitePlayer.reset(new NetworkPlayer("white player"));
-            blackPlayer.reset(new ConsolePlayer("black player"));
-    	}
-    }
+    shared_ptr<ChessPlayer> whitePlayer(new ConsoleChessPlayer(
+                chess,
+                FigureColour::White));
 
-    shared_ptr<ConsoleDisplay> consoleDisplay(new ConsoleDisplay());
+    shared_ptr<ChessPlayer> blackPlayer(new ConsoleChessPlayer(
+                chess,
+                FigureColour::Black));
 
     shared_ptr<ChessGame> chessGame(
-            new ChessGame(whitePlayer, blackPlayer, consoleDisplay));
+            new ChessGame(whitePlayer, blackPlayer));
 
     return chessGame;
 }

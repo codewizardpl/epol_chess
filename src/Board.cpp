@@ -44,3 +44,4 @@ bool Board::isEmpty(const Position& position) const {
 void Board::setEmpty(const Position& position) {
     set(position, Figure(FigureType::None, FigureColour::None));
 }
+

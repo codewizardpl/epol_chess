@@ -10,8 +10,6 @@
 class PuzzleGame: public Game {
     
 public:
-    PuzzleGame();
-    virtual ~PuzzleGame();
     virtual void run();
 
 private:

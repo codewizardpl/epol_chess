@@ -1,30 +1,22 @@
-#ifndef CHESSGAME_HPP
-#define CHESSGAME_HPP
+#ifndef CHESS_GAME_HPP
+#define CHESS_GAME_HPP
 
 #include "Game.hpp"
-#include "Board.hpp"
-#include "Player.hpp"
-#include "ConsoleDisplay.hpp"
 #include "Chess.hpp"
-#include "IllegalMoveException.hpp"
+#include "ChessPlayer.hpp"
 #include <memory>
 
 class ChessGame: public Game {
     
 public:
     ChessGame(
-            std::shared_ptr<Player> whitePlayer,
-            std::shared_ptr<Player> blackPlayer,
-            std::shared_ptr<ConsoleDisplay> _display);
+            std::shared_ptr<ChessPlayer> whitePlayer,
+            std::shared_ptr<ChessPlayer> blackPlayer);
     virtual void run();
 
 private:
-    void setupBoard(Board& board);
-    void makeMove(Chess& chess, Player& player);
-
-    std::shared_ptr<Player> whitePlayer;
-    std::shared_ptr<Player> blackPlayer;
-    std::shared_ptr<ConsoleDisplay> display;
+    std::shared_ptr<ChessPlayer> whitePlayer;
+    std::shared_ptr<ChessPlayer> blackPlayer;
 };
 
 #endif
