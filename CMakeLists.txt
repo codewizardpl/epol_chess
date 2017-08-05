@@ -19,11 +19,10 @@ set(source
     "src/ConsoleDisplay.cpp"
     "src/IllegalMoveException.cpp"
     "src/Chess.cpp"
+    "src/Puzzle.cpp"
     "src/PuzzleGame.cpp"
     "src/ChessGame.cpp"
-    "src/ConsolePlayer.cpp"
-    "src/Player.cpp"
-    "src/NetworkPlayer.cpp"
+    "src/ConsolePuzzlePlayer.cpp"
     "src/main.cpp")
 
 add_executable(${PROJECT_NAME} ${source})
